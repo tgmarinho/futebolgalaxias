@@ -23,15 +23,17 @@ public final class R {
         public static final int sprint_runner=0x7f020009;
     }
     public static final class id {
-        public static final int btnFazerGolTime1=0x7f06000e;
-        public static final int btnFazerGolTime2=0x7f06000f;
-        public static final int btnJogo=0x7f06000c;
-        public static final int btnTirarGolTime1=0x7f06000d;
-        public static final int btnTirarGolTime2=0x7f060010;
+        public static final int btnFazerGolTime1=0x7f060010;
+        public static final int btnFazerGolTime2=0x7f060011;
+        public static final int btnJogo=0x7f06000e;
+        public static final int btnTirarGolTime1=0x7f06000f;
+        public static final int btnTirarGolTime2=0x7f060012;
+        public static final int btn_enviar=0x7f06000b;
         public static final int chronometer=0x7f060000;
-        public static final int configuracoes=0x7f06000b;
+        public static final int comboPlanetas=0x7f06000a;
+        public static final int configuracoes=0x7f06000d;
         public static final int dates=0x7f060005;
-        public static final int futeGalaxias=0x7f06000a;
+        public static final int futeGalaxias=0x7f06000c;
         public static final int name=0x7f060004;
         public static final int placarTime1=0x7f060007;
         public static final int placarTime2=0x7f060009;
@@ -46,8 +48,9 @@ public final class R {
         public static final int chronos2=0x7f030001;
         public static final int main_activity=0x7f030002;
         public static final int placar=0x7f030003;
-        public static final int splashfutebolgalaxias=0x7f030004;
-        public static final int tela_principal=0x7f030005;
+        public static final int spinner_assistencia_gol=0x7f030004;
+        public static final int splashfutebolgalaxias=0x7f030005;
+        public static final int tela_principal=0x7f030006;
     }
     public static final class string {
         public static final int app_name=0x7f040001;

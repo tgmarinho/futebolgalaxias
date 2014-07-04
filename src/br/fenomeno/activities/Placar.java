@@ -79,6 +79,12 @@ public class Placar extends Activity implements OnClickListener {
 
 		btnDecrementaGolTime1.setOnClickListener(new OnClickListener() {
 
+			/*
+			 * TODO: depois de decremetar o gol tem q tirar o gol e assistencia
+			 * 
+			 * (non-Javadoc)
+			 * @see android.view.View.OnClickListener#onClick(android.view.View)
+			 */
 			@Override
 			public void onClick(View v) {
 				Integer placarAtual = Integer.parseInt((String) placarTime1.getText());
