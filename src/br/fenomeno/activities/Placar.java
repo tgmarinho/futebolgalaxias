@@ -2,8 +2,13 @@ package br.fenomeno.activities;
 
 import static br.fenomeno.bo.ValidaPlacar.*;
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -13,6 +18,7 @@ import android.widget.Toast;
 public class Placar extends Activity implements OnClickListener {
 
 	TextView placarTime1, placarTime2, versus, futeGalaxias;
+	private Intent intent;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -109,6 +115,36 @@ public class Placar extends Activity implements OnClickListener {
 			}
 		});
 
+	}
+	
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// TODO Auto-generated method stub
+		MenuInflater inflater = getMenuInflater();
+		inflater.inflate(R.menu.menu, menu);
+		
+		return super.onCreateOptionsMenu(menu);
+	}
+	
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		// TODO Auto-generated method stub
+		int itemClicado = item.getItemId();
+		
+		switch (itemClicado) {
+		case R.id.config:
+			Log.i("TAG", "BOTAO CLICADO CASE");
+			Intent irParaSettings = new Intent(this, Settings.class);
+			
+			startActivity(irParaSettings);
+			
+			break;
+
+		default:
+			break;
+		}
+		
+		return super.onOptionsItemSelected(item);
 	}
 
 	@Override

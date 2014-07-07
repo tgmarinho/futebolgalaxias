@@ -21,13 +21,13 @@
             android:textSize="13sp"
             android:textStyle="italic" />
 
-        <ImageView
+        <Button
+            android:id="@+id/configuracoes"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="100dp"
-            android:clickable="true"
-            android:onClick="@+id/configuracoes"
-            android:src="@drawable/img_pes" />
+            android:background="@drawable/img_pes"
+             />
 
     </LinearLayout>
 
