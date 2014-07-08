@@ -49,7 +49,7 @@ public class Placar extends Activity implements OnClickListener {
 	protected void onResume() {
 		super.onResume();
 
-		Button btnGolTime1, btnGolTime2, btnDecrementaGolTime1, btnDecrementaGolTime2, btnCronometro;
+		Button btnGolTime1, btnGolTime2, btnDecrementaGolTime1, btnDecrementaGolTime2, btnCronometro, btnConfiguracoes;
 
 		btnGolTime1 = (Button) findViewById(R.id.btnFazerGolTime1);
 		btnGolTime2 = (Button) findViewById(R.id.btnFazerGolTime2);
@@ -114,12 +114,27 @@ public class Placar extends Activity implements OnClickListener {
 				}
 			}
 		});
+		
+		
+		/**
+		 * ACESSO AS CONFIGURACOES
+		 */
+		btnConfiguracoes = (Button) findViewById(R.id.btnConfiguracoes);
+		btnConfiguracoes.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				
+				Intent irParaSettings = new Intent(Placar.this, Settings.class);
+				startActivity(irParaSettings);
+			}
+		});
 
 	}
 	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-		// TODO Auto-generated method stub
+		
 		MenuInflater inflater = getMenuInflater();
 		inflater.inflate(R.menu.menu, menu);
 		
@@ -128,14 +143,12 @@ public class Placar extends Activity implements OnClickListener {
 	
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-		// TODO Auto-generated method stub
 		int itemClicado = item.getItemId();
 		
 		switch (itemClicado) {
 		case R.id.config:
-			Log.i("TAG", "BOTAO CLICADO CASE");
+			//Log.i("TAG", "BOTAO CLICADO CASE");
 			Intent irParaSettings = new Intent(this, Settings.class);
-			
 			startActivity(irParaSettings);
 			
 			break;
