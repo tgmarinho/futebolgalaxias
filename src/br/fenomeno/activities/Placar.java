@@ -71,6 +71,11 @@ public class Placar extends Activity implements OnClickListener {
 
 				Integer placarAtual = Integer.parseInt((String) placarTime1.getText());
 				placarTime1.setText(String.valueOf(++placarAtual));
+				
+				Intent marcarAssistenciaGol = new Intent(Placar.this, AssistenciaGol.class);
+				startActivity(marcarAssistenciaGol);
+				
+				
 			}
 		});
 
@@ -162,7 +167,7 @@ public class Placar extends Activity implements OnClickListener {
 
 	@Override
 	public void onClick(View v) {
-		Toast.makeText(this, "Só um minutinho", 3000);
+		Toast.makeText(this, "Só um minutinho", 3000).show();
 	}
 
 }

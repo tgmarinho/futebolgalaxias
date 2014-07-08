@@ -1,5 +1,7 @@
 package br.fenomeno.activities;
 
+import java.util.ArrayList;
+
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
@@ -14,49 +16,42 @@ public class AssistenciaGol extends Activity {
 
 	private int posicaoSpinner;
 
+	
+//	List<Gol> gols = new ArrayList<E>();
+//	List<Assistencia> assistencias = new ArrayList<E>();
+	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
-
 		setContentView(R.layout.spinner_assistencia_gol);
 
-		Spinner combo = (Spinner) findViewById(R.id.comboPlanetas);
-		final Button btn_enviar = (Button) findViewById(R.id.btn_enviar);
+		Spinner comboAssistencia = (Spinner) findViewById(R.id.comboAssistencia);
+		Spinner comboGol= (Spinner) findViewById(R.id.comboGol);
+		final Button btnCartolar = (Button) findViewById(R.id.btnCartolar);
 
 		@SuppressWarnings("rawtypes")
 		ArrayAdapter adaptador = new ArrayAdapter<String>(this,
-				android.R.layout.simple_spinner_item, todosOnibus());
+				android.R.layout.simple_spinner_item, jogadoresAssistenciaEGol());
+		
 		// adaptador.setDropDownViewResource(android.R.layout.simple_spinner_item);
 		adaptador.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-		combo.setAdapter(adaptador);
-
+		comboGol.setAdapter(adaptador);
+		
+		adaptador.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+		comboAssistencia.setAdapter(adaptador);
+		
+		
 		// Se selecionar algum planeta atualiza a imagem
-		combo.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-			public void onItemSelected(AdapterView<?> parent, View v, int posicao,
-					long id) {
+		comboAssistencia.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+			public void onItemSelected(AdapterView<?> parent, View v, int posicao, long id) {
 
-//				if (posicao != 0) {
-//				}
-
-				btn_enviar.setVisibility(View.VISIBLE);
-				System.out.println(posicao);
+				//				if (posicao != 0) {
+				//				}
 
 				// int pos = posicao;
 				setPosicaoSpinner(posicao);
 				System.out.println(getPosicaoSpinner());
-				btn_enviar.setOnClickListener(new OnClickListener() {
-
-					@Override
-					public void onClick(View v) {
-//						Intent it = new Intent(v.getContext(), OnibusMapaTeste.class);
-						Bundle params = new Bundle();
-						params.putInt("id_onibus", getPosicaoSpinner());
-//						it.putExtras(params);
-
-//						startActivity(it);
-					}
-				});
 
 			}
 
@@ -65,12 +60,12 @@ public class AssistenciaGol extends Activity {
 		});
 	}
 
-	private String[] todosOnibus() {
+	private String[] jogadoresAssistenciaEGol() {
 
-		String[] bus = new String[] { "Maria Ap Pedrossian - Oiti",
-				"Arnaldo Estevão Figueredo", "070", "Tiradentes" };
+		String[] jogadores = new String[] { "Thiago Marinho",
+				"Jean Duarte", "Ulisses", "Renato", "Fabio William", "Lucas", "Adaylon" };
 
-		return bus;
+		return jogadores;
 	}
 
 	public int getPosicaoSpinner() {

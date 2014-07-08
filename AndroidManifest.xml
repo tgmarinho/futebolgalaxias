@@ -21,15 +21,17 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+       
         <activity
             android:name=".Settings"
             android:label="@string/app_name" >
         </activity>
+       
+        <activity
+            android:name=".AssistenciaGol"
+            android:label="@string/app_name" >
+        </activity>
 
-        <!-- <activity -->
-        <!-- android:name=".Placar" -->
-        <!-- android:label="@string/app_name" > -->
-        <!-- </activity> -->
         <!--
         <activity
             android:name=".Chronos"

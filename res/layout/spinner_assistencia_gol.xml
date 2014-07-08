@@ -1,25 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-	android:layout_width="fill_parent" android:layout_height="wrap_content"
-	android:orientation="vertical"
->
-	<TextView
-		android:layout_width="fill_parent" android:layout_height="wrap_content"
-		android:text="Selecione uma opção"
-	/>
-	<Spinner android:id="@+id/comboPlanetas"
-		android:layout_width="fill_parent" android:layout_height="wrap_content"
-		android:drawSelectorOnTop="true"
-		android:prompt="@string/app_name"
-	/>
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#ef0000"
+    android:orientation="vertical" >
 
-	<Button 
-	    android:layout_width="wrap_content"
-	    android:layout_height="wrap_content"
-	    android:text="Enviar"
-	    android:id="@+id/btn_enviar"
-	    android:visibility="invisible" >
-	 </Button>
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Haja coração amigo. Quem foi o maestro que fez a Assistência?" />
 
+    <Spinner
+        android:id="@+id/comboAssistencia"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:drawSelectorOnTop="true"
+        android:prompt="@string/app_name" />
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Foi foi foi ele..., o crack da camisa 10 ? Quem fez o Golaço?" />
+   
+    <Spinner
+        android:id="@+id/comboGol"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:drawSelectorOnTop="true"
+        android:prompt="@string/app_name" />
+
+    <Button
+        android:id="@+id/btnCartolar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cartolar"
+        android:visibility="invisible" 
+        android:background="@drawable/btn_green">
+    </Button>
+    
+    
+    
+    
+    
+    
 
 </LinearLayout>
