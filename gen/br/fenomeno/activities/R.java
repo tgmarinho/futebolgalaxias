@@ -25,25 +25,25 @@ public final class R {
     }
     public static final class id {
         public static final int botaoTimePicker1=0x7f07000a;
-        public static final int btnCartolar=0x7f070013;
-        public static final int btnConfiguracoes=0x7f070015;
-        public static final int btnFazerGolTime1=0x7f070018;
-        public static final int btnFazerGolTime2=0x7f070019;
-        public static final int btnJogo=0x7f070016;
-        public static final int btnTirarGolTime1=0x7f070017;
-        public static final int btnTirarGolTime2=0x7f07001a;
+        public static final int btnCartolar=0x7f070015;
+        public static final int btnConfiguracoes=0x7f070019;
+        public static final int btnFazerGolTime1=0x7f07001c;
+        public static final int btnFazerGolTime2=0x7f07001d;
+        public static final int btnJogo=0x7f07001a;
+        public static final int btnTirarGolTime1=0x7f07001b;
+        public static final int btnTirarGolTime2=0x7f07001e;
         public static final int chronometer=0x7f070000;
-        public static final int comboAssistencia=0x7f070011;
-        public static final int comboGol=0x7f070012;
-        public static final int config=0x7f07001b;
+        public static final int comboAssistencia=0x7f070012;
+        public static final int comboGol=0x7f070014;
+        public static final int config=0x7f07001f;
         public static final int dates=0x7f07000c;
-        public static final int futeGalaxias=0x7f070014;
+        public static final int futeGalaxias=0x7f070018;
         public static final int name=0x7f07000b;
         public static final int placarTime1=0x7f07000e;
         public static final int placarTime2=0x7f070010;
         public static final int reset=0x7f070003;
         public static final int seekBar=0x7f070006;
-        public static final int sobre=0x7f07001c;
+        public static final int sobre=0x7f070020;
         public static final int start=0x7f070001;
         public static final int stop=0x7f070002;
         public static final int textView1=0x7f070004;
@@ -52,6 +52,10 @@ public final class R {
         public static final int textViewProgress=0x7f070005;
         public static final int timePicker1=0x7f070009;
         public static final int times=0x7f07000d;
+        public static final int txtAssistencia=0x7f070011;
+        public static final int txtGol=0x7f070013;
+        public static final int txtQuemFezAssistencia=0x7f070016;
+        public static final int txtQuemFezGol=0x7f070017;
         public static final int versus=0x7f07000f;
     }
     public static final class layout {
@@ -69,8 +73,11 @@ public final class R {
     }
     public static final class string {
         public static final int app_name=0x7f040001;
+        public static final int btn_cartolar=0x7f040005;
         public static final int chronometer_initial_format=0x7f040002;
         public static final int hello=0x7f040000;
+        public static final int textoAssistenciaGol1=0x7f040003;
+        public static final int textoAssistenciaGol2=0x7f040004;
     }
     public static final class style {
         /** 

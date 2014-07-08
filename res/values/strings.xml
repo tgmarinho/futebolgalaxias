@@ -4,5 +4,8 @@
     <string name="hello">Hello Gol, gollllll!</string>
     <string name="app_name">FuteboR das Galáxias!!</string>
     <string name="chronometer_initial_format">Initial format:<xliff:g id="initial-format">%</xliff:g></string>
+    <string name="textoAssistenciaGol1">Haja coração amigo. Quem foi o maestro que fez a Assistência?</string>
+    <string name="textoAssistenciaGol2">Foi foi foi ele..., o crack da camisa 10!! Quem fez o Golaço?</string>
+    <string name="btn_cartolar">Cartolar</string>
 
 </resources>

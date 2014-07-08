@@ -2,13 +2,15 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="#ef0000"
+    android:background="#ffffff"
     android:orientation="vertical" >
 
     <TextView
+        android:id="@+id/txtAssistencia"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="Haja coração amigo. Quem foi o maestro que fez a Assistência?" />
+        android:text="@string/textoAssistenciaGol1"
+        android:textSize="16sp" />
 
     <Spinner
         android:id="@+id/comboAssistencia"
@@ -18,10 +20,12 @@
         android:prompt="@string/app_name" />
 
     <TextView
+        android:id="@+id/txtGol"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="Foi foi foi ele..., o crack da camisa 10 ? Quem fez o Golaço?" />
-   
+        android:text="@string/textoAssistenciaGol2"
+        android:textSize="16sp" />
+
     <Spinner
         android:id="@+id/comboGol"
         android:layout_width="fill_parent"
@@ -33,15 +37,20 @@
         android:id="@+id/btnCartolar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Cartolar"
-        android:visibility="invisible" 
-        android:background="@drawable/btn_green">
+        android:background="@drawable/btn_green"
+        android:text="@string/btn_cartolar" >
     </Button>
+
+    <TextView
+        android:id="@+id/txtQuemFezAssistencia"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textSize="16sp" />
     
-    
-    
-    
-    
-    
+     <TextView
+        android:id="@+id/txtQuemFezGol"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textSize="16sp" />
 
 </LinearLayout>
