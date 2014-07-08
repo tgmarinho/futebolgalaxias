@@ -125,7 +125,7 @@ public class Placar extends Activity implements OnClickListener {
 			@Override
 			public void onClick(View v) {
 				
-				Intent irParaSettings = new Intent(Placar.this, Settings.class);
+				Intent irParaSettings = new Intent(Placar.this, Configuracoes.class);
 				startActivity(irParaSettings);
 			}
 		});
@@ -148,7 +148,7 @@ public class Placar extends Activity implements OnClickListener {
 		switch (itemClicado) {
 		case R.id.config:
 			//Log.i("TAG", "BOTAO CLICADO CASE");
-			Intent irParaSettings = new Intent(this, Settings.class);
+			Intent irParaSettings = new Intent(this, Configuracoes.class);
 			startActivity(irParaSettings);
 			
 			break;

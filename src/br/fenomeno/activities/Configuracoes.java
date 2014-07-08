@@ -13,7 +13,7 @@ import android.widget.TimePicker;
 import android.widget.Toast;
 import android.widget.SeekBar.OnSeekBarChangeListener;
 
-public class Settings extends Activity implements OnSeekBarChangeListener {
+public class Configuracoes extends Activity implements OnSeekBarChangeListener {
 	
 	private TimePicker timePicker;
 	private SeekBar seekBar;
@@ -22,7 +22,7 @@ public class Settings extends Activity implements OnSeekBarChangeListener {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.settings);
+		setContentView(R.layout.configuracoes);
 		
 		// SELECIONAR QTD DE GOLS
 		seekBar = (SeekBar)findViewById(R.id.seekBar);

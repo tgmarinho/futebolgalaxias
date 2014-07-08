@@ -230,7 +230,7 @@ containing a value of this type.
     public static final class id {
         public static final int alignBounds=0x7f040002;
         public static final int alignMargins=0x7f040003;
-        public static final int botaoTimePicker1=0x7f040021;
+        public static final int botaoTimePicker1=0x7f04001b;
         public static final int bottom=0x7f040005;
         public static final int btnConfiguracoes=0x7f040025;
         public static final int btnFazerGolTime1=0x7f040028;
@@ -247,7 +247,7 @@ containing a value of this type.
         public static final int clip_vertical=0x7f04000e;
         public static final int comboPlanetas=0x7f040022;
         public static final int config=0x7f04002b;
-        public static final int dates=0x7f040016;
+        public static final int dates=0x7f04001d;
         public static final int end=0x7f040011;
         public static final int fill=0x7f04000d;
         public static final int fill_horizontal=0x7f04000b;
@@ -255,31 +255,31 @@ containing a value of this type.
         public static final int futeGalaxias=0x7f040024;
         public static final int horizontal=0x7f040000;
         public static final int left=0x7f040006;
-        public static final int name=0x7f040015;
-        public static final int placarTime1=0x7f040018;
-        public static final int placarTime2=0x7f04001a;
+        public static final int name=0x7f04001c;
+        public static final int placarTime1=0x7f04001f;
+        public static final int placarTime2=0x7f040021;
         public static final int reset=0x7f040014;
         public static final int right=0x7f040007;
-        public static final int seekBar=0x7f04001d;
+        public static final int seekBar=0x7f040017;
         public static final int sobre=0x7f04002c;
         public static final int start=0x7f040010;
         public static final int stop=0x7f040013;
-        public static final int textView1=0x7f04001b;
-        public static final int textView3=0x7f04001f;
-        public static final int textViewAction=0x7f04001e;
-        public static final int textViewProgress=0x7f04001c;
-        public static final int timePicker1=0x7f040020;
-        public static final int times=0x7f040017;
+        public static final int textView1=0x7f040015;
+        public static final int textView3=0x7f040019;
+        public static final int textViewAction=0x7f040018;
+        public static final int textViewProgress=0x7f040016;
+        public static final int timePicker1=0x7f04001a;
+        public static final int times=0x7f04001e;
         public static final int top=0x7f040004;
-        public static final int versus=0x7f040019;
+        public static final int versus=0x7f040020;
         public static final int vertical=0x7f040001;
     }
     public static final class layout {
         public static final int chronos=0x7f030000;
         public static final int chronos2=0x7f030001;
-        public static final int main_activity=0x7f030002;
-        public static final int placar=0x7f030003;
-        public static final int settings=0x7f030004;
+        public static final int configuracoes=0x7f030002;
+        public static final int main_activity=0x7f030003;
+        public static final int placar=0x7f030004;
         public static final int spinner_assistencia_gol=0x7f030005;
         public static final int splashfutebolgalaxias=0x7f030006;
         public static final int tela_principal=0x7f030007;
