@@ -76,6 +76,8 @@ public final class R {
         public static final int btn_cartolar=0x7f040005;
         public static final int chronometer_initial_format=0x7f040002;
         public static final int hello=0x7f040000;
+        public static final int quem_fez_assistencia=0x7f040007;
+        public static final int quem_fez_gol=0x7f040006;
         public static final int textoAssistenciaGol1=0x7f040003;
         public static final int textoAssistenciaGol2=0x7f040004;
     }

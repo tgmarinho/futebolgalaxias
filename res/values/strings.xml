@@ -7,5 +7,7 @@
     <string name="textoAssistenciaGol1">Haja coração amigo. Quem foi o maestro que fez a Assistência?</string>
     <string name="textoAssistenciaGol2">Foi foi foi ele..., o crack da camisa 10!! Quem fez o Golaço?</string>
     <string name="btn_cartolar">Cartolar</string>
+    <string name="quem_fez_gol">Gol</string>
+    <string name="quem_fez_assistencia">Assistência</string>
 
 </resources>
