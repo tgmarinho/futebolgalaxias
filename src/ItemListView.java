@@ -1,3 +1,0 @@
-public class ItemListView { private String texto; private int iconeRid; public ItemListView() { this("", -1); } public ItemListView(String texto, int iconeRid) { this.texto = texto; this.iconeRid = iconeRid; } public int getIconeRid() { return iconeRid; } public void setIconeRid(int iconeRid) { this.iconeRid = iconeRid; } public String getTexto() { return texto; } public void setTexto(String texto) { this.texto = texto; } }
-sadsada
-Leia mais em: Android: Criando um ListView Customizado http://www.devmedia.com.br/android-criando-um-listview-customizado/26260#ixzz370nZQ3zM
