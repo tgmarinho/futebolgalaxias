@@ -85,24 +85,25 @@ public class Placar extends Activity implements OnClickListener {
 			public void onClick(View v) {
 				Integer placarAtual = Integer.parseInt((String) placarTime2.getText());
 				placarTime2.setText(String.valueOf(++placarAtual));
+				
+				Intent marcarAssistenciaGol = new Intent(Placar.this, AssistenciaGol.class);
+				startActivity(marcarAssistenciaGol);
 			}
 		});
 
 		btnDecrementaGolTime1.setOnClickListener(new OnClickListener() {
 
-			/*
-			 * TODO: depois de decremetar o gol tem q tirar o gol e assistencia
-			 * 
-			 * (non-Javadoc)
-			 * @see android.view.View.OnClickListener#onClick(android.view.View)
-			 */
 			@Override
 			public void onClick(View v) {
 				Integer placarAtual = Integer.parseInt((String) placarTime1.getText());
 
 				if (!naoPermitePlacarNegativo(placarAtual)) {
 					placarTime1.setText(String.valueOf(--placarAtual));
+					// Deleta o Gol do cara
+					
 				}
+				
+				
 			}
 
 		});
@@ -115,8 +116,9 @@ public class Placar extends Activity implements OnClickListener {
 
 				if (!naoPermitePlacarNegativo(placarAtual)) {
 					placarTime2.setText(String.valueOf(--placarAtual));
-
+					// Deleta o Gol do cara
 				}
+				
 			}
 		});
 		
