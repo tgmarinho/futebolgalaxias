@@ -71,5 +71,6 @@ public class ConfiguracaoDAO extends SQLiteOpenHelper {
 			cursor.close();
 
 		return config;
+		
 	}
 }
