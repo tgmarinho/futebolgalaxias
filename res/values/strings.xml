@@ -9,5 +9,6 @@
     <string name="btn_cartolar">Cartolar</string>
     <string name="quem_fez_gol">Gol</string>
     <string name="quem_fez_assistencia">Assistência</string>
+    <string name="lances">Lances - Gols e Assistências</string>
 
 </resources>

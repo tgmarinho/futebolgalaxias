@@ -1,90 +1,49 @@
 package br.fenomeno.activities;
 
 
+
 import android.app.ListActivity;
-import android.database.Cursor;
 import android.os.Bundle;
-import android.provider.ContactsContract;
-import android.support.v4.app.LoaderManager;
-import android.support.v4.content.CursorLoader;
-import android.support.v4.content.Loader;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.ProgressBar;
-import android.widget.SimpleCursorAdapter;
+import android.widget.Toast;
 
-public class Lances extends ListActivity implements LoaderManager.LoaderCallbacks<Cursor> {
+public class Lances extends ListActivity {
 
-    // This is the Adapter being used to display the list's data
-    SimpleCursorAdapter mAdapter;
+	private String[] lstEstados;
 
-    // These are the Contacts rows that we will retrieve
-    static final String[] PROJECTION = new String[] {ContactsContract.Data._ID,
-            ContactsContract.Data.DISPLAY_NAME};
+	public void onCreate(Bundle icicle) {
+		super.onCreate(icicle);
+		//Criar um array de Strings, que será utilizado em seu ListActivity
+		lstEstados = new String[] {"São Paulo", "Rio de Janeiro", "Minas Gerais", "Rio Grande do Sul",
+				"Santa Catarina", "Paraná", "Mato Grosso", "Amazonas"};
+		
+//		List<Object> estados = new ArrayList<Object>();
+//		estados.add("São Paulo");
+//		estados.add("Rio de Janeiro");
+//		estados.add("Minas Gerais");
+//		estados.add("Rio Grande do Sul");
+//		estados.add("Santa Catarina");
+//		estados.add("Paraná");
+//		estados.add("Amazonas");
+		
 
-    // This is the select criteria
-    static final String SELECTION = "((" + 
-            ContactsContract.Data.DISPLAY_NAME + " NOTNULL) AND (" +
-            ContactsContract.Data.DISPLAY_NAME + " != '' ))";
+		//Criar um ArrayAdapter, que vai fazer aparecer as Strings acima em seu ListView
+		this.setListAdapter(new ArrayAdapter(this, android.R.layout.simple_list_item_1, lstEstados));
+	}
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+	@Override
+	protected void onListItemClick(ListView l, View v, int position, long id) {
+		super.onListItemClick(l, v, position, id);
 
-        // Create a progress bar to display while the list loads
-        ProgressBar progressBar = new ProgressBar(this);
-        progressBar.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT,
-                LayoutParams.WRAP_CONTENT));
-        progressBar.setIndeterminate(true);
-        getListView().setEmptyView(progressBar);
+		//Pegar o item clicado
+		Object o = this.getListAdapter().getItem(position);
+		String lstrEstado = o.toString();
 
-        // Must add the progress bar to the root of the layout
-        ViewGroup root = (ViewGroup) findViewById(android.R.id.content);
-        root.addView(progressBar);
-
-        // For the cursor adapter, specify which columns go into which views
-        String[] fromColumns = {ContactsContract.Data.DISPLAY_NAME};
-        int[] toViews = {android.R.id.text1}; // The TextView in simple_list_item_1
-
-        // Create an empty adapter we will use to display the loaded data.
-        // We pass null for the cursor, then update it in onLoadFinished()
-        mAdapter = new SimpleCursorAdapter(this, 
-                android.R.layout.simple_list_item_1, null,
-                fromColumns, toViews);
-        setListAdapter(mAdapter);
-
-        // Prepare the loader.  Either re-connect with an existing one,
-        // or start a new one.
-//        getListView().getLo getLoaderManager().initLoader(0, null, this);
-    }
-
-    // Called when a new Loader needs to be created
-    public Loader<Cursor> onCreateLoader(int id, Bundle args) {
-        // Now create and return a CursorLoader that will take care of
-        // creating a Cursor for the data being displayed.
-        return new CursorLoader(this, ContactsContract.Data.CONTENT_URI,
-                PROJECTION, SELECTION, null, null);
-    }
-
-    // Called when a previously created loader has finished loading
-    public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
-        // Swap the new cursor in.  (The framework will take care of closing the
-        // old cursor once we return.)
-        mAdapter.changeCursor(data);
-    }
-
-    // Called when a previously created loader is reset, making the data unavailable
-    public void onLoaderReset(Loader<Cursor> loader) {
-        // This is called when the last Cursor provided to onLoadFinished()
-        // above is about to be closed.  We need to make sure we are no
-        // longer using it.
-         mAdapter.changeCursor(null);
-    }
-
-    @Override 
-    public void onListItemClick(ListView l, View v, int position, long id) {
-        // Do something when a list item is clicked
-    }
+		//Apresentar o item clicado
+		Toast.makeText(this, "Você clicou no estado : " + lstrEstado, Toast.LENGTH_LONG).show();
+	}
 }
+
+

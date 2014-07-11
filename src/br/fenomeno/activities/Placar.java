@@ -18,6 +18,7 @@ import android.widget.Toast;
 public class Placar extends Activity implements OnClickListener {
 
 	TextView placarTime1, placarTime2, versus, futeGalaxias;
+	
 	private Intent intent;
 
 	@Override
@@ -49,12 +50,14 @@ public class Placar extends Activity implements OnClickListener {
 	protected void onResume() {
 		super.onResume();
 
-		Button btnGolTime1, btnGolTime2, btnDecrementaGolTime1, btnDecrementaGolTime2, btnCronometro, btnConfiguracoes;
+		Button btnGolTime1, btnGolTime2, btnDecrementaGolTime1, btnDecrementaGolTime2,
+				btnCronometro, btnConfiguracoes, btnLances;
 
 		btnGolTime1 = (Button) findViewById(R.id.btnFazerGolTime1);
 		btnGolTime2 = (Button) findViewById(R.id.btnFazerGolTime2);
 		btnDecrementaGolTime1 = (Button) findViewById(R.id.btnTirarGolTime1);
 		btnDecrementaGolTime2 = (Button) findViewById(R.id.btnTirarGolTime2);
+		btnLances = (Button) findViewById(R.id.btnLances);
 		// btnCronometro = (Button) findViewById(R.id.btnJogo);
 
 		// View.OnClickListener mStartListener = new OnClickListener() {
@@ -136,7 +139,24 @@ public class Placar extends Activity implements OnClickListener {
 				startActivity(irParaSettings);
 			}
 		});
+		
+		
+		
+		/**
+		 * ACESSA OS LANCES ASSISTENCIA E GOLS
+		 */
 
+		
+		btnLances.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				
+				Intent irParaLances = new Intent(Placar.this, Lances.class);
+				startActivity(irParaLances);
+			}
+		});
+		
 	}
 	
 	@Override

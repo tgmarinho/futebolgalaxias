@@ -6,10 +6,12 @@ import java.util.List;
 
 public final class GerarJogadoresTemp {
 
-	static List<Jogador> jogadores = new ArrayList<Jogador>();
+	 static List<Jogador> jogadores = null;
 	
 	public static List<Jogador> jogadoresFake() {
 
+		 List<Jogador> jogadores = new ArrayList<Jogador>();
+		
 		Jogador j1= new Jogador();
 		j1.setId(1L);
 		j1.setNome("Ulisses");

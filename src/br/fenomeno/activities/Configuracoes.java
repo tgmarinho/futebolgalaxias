@@ -1,23 +1,12 @@
 package br.fenomeno.activities;
 
-import java.util.Calendar;
-import java.util.GregorianCalendar;
-
-import br.fenomeno.dao.ConfiguracaoDAO;
-import br.fenomeno.entity.Configuracao;
 import android.app.Activity;
 import android.os.Bundle;
-import android.text.format.DateFormat;
-import android.util.Log;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.SeekBar;
-import android.widget.TextView;
-import android.widget.TimePicker;
-import android.widget.Toast;
 import android.widget.SeekBar.OnSeekBarChangeListener;
+import android.widget.TextView;
+import br.fenomeno.dao.ConfiguracaoDAO;
+import br.fenomeno.entity.Configuracao;
 
 public class Configuracoes extends Activity implements OnSeekBarChangeListener {
 	
