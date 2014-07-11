@@ -1,7 +1,13 @@
 package br.fenomeno.activities;
 
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+
+import br.fenomeno.dao.ConfiguracaoDAO;
+import br.fenomeno.entity.Configuracao;
 import android.app.Activity;
 import android.os.Bundle;
+import android.text.format.DateFormat;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -15,52 +21,66 @@ import android.widget.SeekBar.OnSeekBarChangeListener;
 
 public class Configuracoes extends Activity implements OnSeekBarChangeListener {
 	
-	private TimePicker timePicker;
-	private SeekBar seekBar;
-    private TextView textProgress, textAction;
+	//private TimePicker tempoDeJogo;
+	private SeekBar seekBarGols, seekBarTempo;
+    private TextView textProgressGols, textProgressTempo;
+    ConfiguracaoDAO dao = new ConfiguracaoDAO(this);
+    Configuracao config = new Configuracao();
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.configuracoes);
 		
-		// SELECIONAR QTD DE GOLS
-		seekBar = (SeekBar)findViewById(R.id.seekBar);
-        seekBar.setOnSeekBarChangeListener(this);
-        
-        // make text label for progress value
-        textProgress = (TextView)findViewById(R.id.textViewProgress);
-        // make text label for action
-        textAction = (TextView)findViewById(R.id.textViewAction);
+		config = dao.buscarConfiguracao();
 		
-		timePicker = (TimePicker) findViewById(R.id.timePicker1);
-        timePicker.setIs24HourView(true);
-        
-       
 		/**
-		 * SELECIONAR TEMPO
+		 * SELECIONAR QTD DE GOLS
 		 */
-		Button button = (Button) findViewById(R.id.botaoTimePicker1);
-		button.setOnClickListener(new View.OnClickListener() {
-
-			@Override
-			public void onClick(View v) {
-				Toast.makeText(
-						getBaseContext(),
-						"Tempo selecionado: " + timePicker.getCurrentHour() + ":"
-								+ timePicker.getCurrentMinute(),
-						Toast.LENGTH_SHORT).show();
-			}
-		});
+		seekBarGols = (SeekBar)findViewById(R.id.seekBarGols);
+		seekBarGols.setOnSeekBarChangeListener(this);
+        
+        textProgressGols = (TextView)findViewById(R.id.textViewProgressGols);
+        
+        seekBarGols.setProgress(config.getGol());
+        textProgressGols.setText("Quantidade selecionada: "+seekBarGols.getProgress()+" gol(s)");
+		
+        /**
+         * SELECIONAR TEMPO
+         */
+        seekBarTempo = (SeekBar)findViewById(R.id.seekBarTempo);
+        seekBarTempo.setOnSeekBarChangeListener(this);
+        
+        textProgressTempo = (TextView)findViewById(R.id.textViewProgressTempo);
+        
+        seekBarTempo.setProgress(config.getMinutos());
+        textProgressTempo.setText("Tempo selecionado:  "+seekBarTempo.getProgress()+"min");
+        
+		/**
+		 * SETAR NA ENTIDADE CONFIGURACAO
+		 */
+		//Gol
+		config.setGol(seekBarGols.getProgress());
+		//Tempo de Jogo
+		config.setMinutos(seekBarTempo.getProgress());
+		
+		/**
+		 * SALVAR NO BANCO
+		 */
+		dao.salvar(config);
+		dao.close();
 	}
 	
 	@Override
     public void onProgressChanged(SeekBar seekBar, int progress,
     		boolean fromUser) {
-    	// change progress text label with current seekbar value
-    	textProgress.setText("Quantidade de Gol(s) \nselecionada: "+progress);
-    	// change action text label to changing
-    	//textAction.setText("selecionado..");
+		
+		if (seekBar.getId() == (seekBarGols.getId())) {
+			textProgressGols.setText("Quantidade selecionada: " + progress
+					+ " gol(s)");
+		} else if (seekBar.getId() == (seekBarTempo.getId())) {
+			textProgressTempo.setText("Tempo selecionado: " + progress + "min");
+		}
     }
 
 	@Override
@@ -71,9 +91,17 @@ public class Configuracoes extends Activity implements OnSeekBarChangeListener {
 	@Override
     public void onStopTrackingTouch(SeekBar seekBar) {
     	seekBar.setSecondaryProgress(seekBar.getProgress());
-    	//textAction.setText("seleção finalizada");    	
+
+		if (seekBar.getId() == (seekBarGols.getId())) {
+			config.setGol(seekBar.getProgress());
+		} else if (seekBar.getId() == (seekBarTempo.getId())) {
+			config.setMinutos(seekBar.getProgress());
+		}
+
+		/**
+		 * SALVAR NO BANCO
+		 */
+		dao.salvar(config);
+		dao.close();
     }
-
-	
-
 }

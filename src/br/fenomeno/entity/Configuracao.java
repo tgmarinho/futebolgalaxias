@@ -2,21 +2,30 @@ package br.fenomeno.entity;
 
 import java.sql.Timestamp;
 
+import android.widget.TimePicker;
+
 public class Configuracao {
 
+	private Integer id;
 	private Integer gol;
-	private Timestamp tempo;
+	private Integer minutos;
 	
+	public Integer getId() {
+		return id;
+	}
+	public void setId(Integer id) {
+		this.id = id;
+	}
 	public Integer getGol() {
 		return gol;
 	}
 	public void setGol(Integer gol) {
 		this.gol = gol;
 	}
-	public Timestamp getTempo() {
-		return tempo;
+	public Integer getMinutos() {
+		return minutos;
 	}
-	public void setTempo(Timestamp tempo) {
-		this.tempo = tempo;
+	public void setMinutos(Integer minutos) {
+		this.minutos = minutos;
 	}
 }
