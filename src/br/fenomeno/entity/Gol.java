@@ -1,5 +1,11 @@
 package br.fenomeno.entity;
 
+/**
+ *  Classe não persitida
+ * @author toliveira
+ *
+ */
+
 public class Gol {
 
 	private Jogador jogador;

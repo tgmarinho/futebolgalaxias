@@ -1,20 +1,21 @@
 package br.fenomeno.dao;
 
+import java.util.List;
+
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteDatabase.CursorFactory;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.util.Log;
 import br.fenomeno.entity.Configuracao;
+import br.fenomeno.entity.Jogador;
 
-public class ConfiguracaoDAO extends SQLiteOpenHelper {
+public class FutebolGalaxiasDAO extends SQLiteOpenHelper implements ICrud {
 
 	private static final String DATABASE = "FutebolDasGalaxias";
-	private static final int VERSAO = 8;
+	private static final int VERSAO = 1;
 
-	public ConfiguracaoDAO(Context context) {
+	public FutebolGalaxiasDAO(Context context) {
 		super(context, DATABASE, null, VERSAO);
 	}
 
@@ -72,5 +73,14 @@ public class ConfiguracaoDAO extends SQLiteOpenHelper {
 
 		return config;
 		
+	}
+	
+	
+	
+
+	@Override
+	public List<Jogador> buscarTodosJogadores() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

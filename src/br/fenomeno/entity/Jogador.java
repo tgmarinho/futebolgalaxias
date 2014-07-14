@@ -3,20 +3,14 @@ package br.fenomeno.entity;
 public class Jogador {
 	
 	private Long id;
-	
 	private String nome;
+	private String email;
+	private String celular;
 	
-	private Long qtdAssistencia;
+	public Jogador() {
+	}
 	
-	private Long qtdGol;
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
+	
 
 	public String getNome() {
 		return nome;
@@ -26,21 +20,33 @@ public class Jogador {
 		this.nome = nome;
 	}
 
-	public Long getQtdAssistencia() {
-		return qtdAssistencia;
+	public String getEmail() {
+		return email;
 	}
 
-	public void setQtdAssistencia(Long qtdAssistencia) {
-		this.qtdAssistencia = qtdAssistencia;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
-	public Long getQtdGol() {
-		return qtdGol;
+	public String getCelular() {
+		return celular;
 	}
 
-	public void setQtdGol(Long qtdGol) {
-		this.qtdGol = qtdGol;
+	public void setCelular(String celular) {
+		this.celular = celular;
 	}
+
+	public Long getId() {
+		return id;
+	}
+
+
+	/** TODO: retirar quando estiver em produção, usando apenas para teste */
+	public void setId(Long id) {
+		this.id = id;
+	}
+	
+	
 
 	
 }
