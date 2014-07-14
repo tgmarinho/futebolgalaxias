@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.TextView;
-import br.fenomeno.dao.FutebolGalaxiasDAO;
+import br.fenomeno.dao.ConfiguracaoDAO;
 import br.fenomeno.entity.Configuracao;
 
 public class Configuracoes extends Activity implements OnSeekBarChangeListener {
@@ -13,7 +13,7 @@ public class Configuracoes extends Activity implements OnSeekBarChangeListener {
 	//private TimePicker tempoDeJogo;
 	private SeekBar seekBarGols, seekBarTempo;
     private TextView textProgressGols, textProgressTempo;
-    FutebolGalaxiasDAO dao = new FutebolGalaxiasDAO(this);
+    ConfiguracaoDAO dao = new ConfiguracaoDAO(this);
     Configuracao config = new Configuracao();
 
 	@Override

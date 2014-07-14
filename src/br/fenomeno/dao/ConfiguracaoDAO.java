@@ -1,53 +1,48 @@
 package br.fenomeno.dao;
 
-import java.util.List;
-
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
 import br.fenomeno.entity.Configuracao;
-import br.fenomeno.entity.Jogador;
 
-public class FutebolGalaxiasDAO extends SQLiteOpenHelper implements ICrud {
 
-	private static final String DATABASE = "FutebolDasGalaxias";
-	private static final int VERSAO = 1;
+public class ConfiguracaoDAO implements IConfiguracaoDAO {
 
-	public FutebolGalaxiasDAO(Context context) {
-		super(context, DATABASE, null, VERSAO);
+	private DatabaseHelper helper;
+	private SQLiteDatabase db;
+
+
+	public ConfiguracaoDAO(Context context){
+		helper = new DatabaseHelper(context);
 	}
 
-	@Override
-	public void onCreate(SQLiteDatabase db) {
-		String ddl = "CREATE TABLE IF NOT EXISTS Configuracao (id INTEGER primary key, gol INTEGER , minutos INTEGER)";
-		db.execSQL(ddl);
-		
-		ddl = "INSERT or replace INTO Configuracao (id, gol, minutos) VALUES(1,2,10)" ;       
-		db.execSQL(ddl);
+	private SQLiteDatabase getDb() {
+		if (db == null) {
+			db = helper.getWritableDatabase();
+		}
+		return db;
 	}
 
-	@Override
-	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-		String ddl = "DROP TABLE IF EXISTS Configuracao";
-		db.execSQL(ddl);
-		
-		this.onCreate(db);
+	public void close(){
+		helper.close();
+		db = null;
 	}
-	
+
+
+
 	public void salvar(Configuracao config) {
 		ContentValues values = new ContentValues();
-		
+
 		//values.put("id", 1);
 		values.put("gol", config.getGol().toString());
 		values.put("minutos", config.getMinutos().toString());
-		
+
 		String where = "id = ?";
 		String[] args = {"1"};
-		
-		getWritableDatabase().update("Configuracao", values, "id = 1" , null );
-		
+
+		helper.getWritableDatabase().update("Configuracao", values, "id = 1" , null );
+
 		//String strSQL = "UPDATE myTable SET Column1 = someValue WHERE columnId = "+ someValue;
 		//myDataBase.execSQL(strSQL);
 	}
@@ -58,7 +53,7 @@ public class FutebolGalaxiasDAO extends SQLiteOpenHelper implements ICrud {
 
 		String[] colunas = new String[] { "id", "gol", "minutos" };
 
-		Cursor cursor = getWritableDatabase().query("Configuracao", colunas,
+		Cursor cursor = helper.getWritableDatabase().query("Configuracao", colunas,
 				null, null, null, null, null);
 
 		if (cursor != null && cursor.moveToFirst()) {
@@ -72,15 +67,10 @@ public class FutebolGalaxiasDAO extends SQLiteOpenHelper implements ICrud {
 			cursor.close();
 
 		return config;
-		
-	}
-	
-	
-	
 
-	@Override
-	public List<Jogador> buscarTodosJogadores() {
-		// TODO Auto-generated method stub
-		return null;
 	}
+
+
+
 }
+
