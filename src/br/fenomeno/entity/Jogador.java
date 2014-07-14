@@ -12,6 +12,16 @@ public class Jogador {
 	
 	
 
+	public Jogador(Long id, String nome, String email, String celular) {
+		super();
+		this.id = id;
+		this.nome = nome;
+		this.email = email;
+		this.celular = celular;
+	}
+
+
+
 	public String getNome() {
 		return nome;
 	}
