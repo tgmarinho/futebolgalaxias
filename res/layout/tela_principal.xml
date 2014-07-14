@@ -45,6 +45,7 @@
             android:layout_gravity="center"
             android:layout_weight="0.40"
             android:gravity="center"
+            android:text="2"
             android:textColor="#ef0000"
             android:textSize="70sp" />
 
@@ -74,27 +75,44 @@
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:layout_weight="0.09"
         android:background="#115588"
         android:gravity="center_horizontal"
-        android:orientation="vertical" >
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/btnComecar"
+            android:layout_width="114dp"
+            android:layout_height="60dp"
+            android:layout_weight="1.56"
+            android:background="@drawable/btn_black"
+            android:gravity="center"
+            android:onClick="startCronometer"
+            android:text="Começar"
+            android:textColor="@android:color/white" />
 
         <Chronometer
             android:id="@+id/chronometer"
-            android:layout_width="match_parent"
+            android:layout_width="96dp"
             android:layout_height="match_parent"
             android:format="@string/chronometer_initial_format"
             android:gravity="center"
             android:paddingBottom="30dip"
-            android:paddingTop="30dip" />
+            android:paddingTop="30dip"
+            android:textAppearance="@android:style/TextAppearance.Large"
+            android:textSize="30sp" />
 
         <Button
-            android:id="@+id/btnJogo"
-            android:layout_width="142dp"
-            android:layout_height="52dp"
+            android:id="@+id/btnStop"
+            android:layout_width="114dp"
+            android:layout_height="60dp"
+            android:layout_weight="1.56"
             android:background="@drawable/btn_black"
             android:gravity="center"
-            android:text="Começar"
+            android:onClick="stopCronometer"
+            android:text="Pausar"
             android:textColor="@android:color/white" />
+        
     </LinearLayout>
 
     <LinearLayout

@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -12,6 +13,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.Chronometer;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -20,13 +22,20 @@ public class Placar extends Activity implements OnClickListener {
 	TextView placarTime1, placarTime2, versus, futeGalaxias;
 	
 	private Intent intent;
-
+	private Chronometer ch;
+	private long milliseconds;
+	Button stop,start;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
 		setContentView(R.layout.tela_principal);
-
+		ch = (Chronometer) findViewById(R.id.chronometer);
+		milliseconds = 0;
+		stop = (Button) findViewById(R.id.btnStop);
+		start = (Button) findViewById(R.id.btnComecar);
+		
 		Typeface type = Typeface.createFromAsset(getAssets(),"fonts/jd_led3.ttf");
 		Typeface type2 = Typeface.createFromAsset(getAssets(),"fonts/jd_wave.ttf");
 
@@ -177,9 +186,7 @@ public class Placar extends Activity implements OnClickListener {
 			//Log.i("TAG", "BOTAO CLICADO CASE");
 			Intent irParaSettings = new Intent(this, Configuracoes.class);
 			startActivity(irParaSettings);
-			
 			break;
-
 		default:
 			break;
 		}
@@ -192,4 +199,42 @@ public class Placar extends Activity implements OnClickListener {
 		Toast.makeText(this, "Só um minutinho", 3000).show();
 	}
 
+	public void startCronometer(View view) {		
+		if (ch.getText().equals("Continuar")){
+			ch.setBase(SystemClock.elapsedRealtime() - milliseconds);
+		} else {
+			ch.setBase(SystemClock.elapsedRealtime());
+			ch.start();
+			start.setEnabled(false);
+			
+		}
+	}
+
+	public void stopCronometer(View view) {
+		if (stop.getText().equals("Reset")) {
+			resetCronometer(view);
+		} 
+		else if(stop.getText().equals("Continuar")){
+//			TODO continua o tempo  normalmente
+			milliseconds = SystemClock.elapsedRealtime() - ch.getBase();
+			stop.setText("Pausar");
+			start.setEnabled(false);
+			}
+		else {
+			milliseconds = SystemClock.elapsedRealtime() - ch.getBase();
+			ch.stop();
+			stop.setText("Reset");
+			start.setText("Continuar");
+			start.setEnabled(false);
+		}
+	}
+
+	public void resetCronometer(View view) {
+		ch.setBase(SystemClock.elapsedRealtime());
+		ch.stop();
+		stop.setText("Pause");
+		start.setEnabled(true);
+		start.setText("Começar");
+	}
+	
 }
