@@ -31,7 +31,7 @@ public final class R {
         public static final int btnFazerGolTime1=0x7f070022;
         public static final int btnFazerGolTime2=0x7f070023;
         public static final int btnLances=0x7f070025;
-        public static final int btnStop=0x7f070020;
+        public static final int btnNovaPartida=0x7f070020;
         public static final int btnTirarGolTime1=0x7f070021;
         public static final int btnTirarGolTime2=0x7f070024;
         public static final int chronometer=0x7f070000;

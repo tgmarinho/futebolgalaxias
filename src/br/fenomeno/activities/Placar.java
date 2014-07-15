@@ -33,7 +33,7 @@ public class Placar extends Activity implements OnClickListener {
 		setContentView(R.layout.tela_principal);
 		ch = (Chronometer) findViewById(R.id.chronometer);
 		milliseconds = 0;
-		stop = (Button) findViewById(R.id.btnStop);
+		stop = (Button) findViewById(R.id.btnNovaPartida);
 		start = (Button) findViewById(R.id.btnComecar);
 		
 		Typeface type = Typeface.createFromAsset(getAssets(),"fonts/jd_led3.ttf");
@@ -48,7 +48,7 @@ public class Placar extends Activity implements OnClickListener {
 		placarTime2.setTypeface(type);
 		versus.setTypeface(type);
 		futeGalaxias.setTypeface(type2);
-		// seta padrão
+		// seta padrï¿½o
 		placarTime1.setText("0");
 		placarTime2.setText("0");
 		versus.setText("  -  ");
@@ -196,45 +196,33 @@ public class Placar extends Activity implements OnClickListener {
 
 	@Override
 	public void onClick(View v) {
-		Toast.makeText(this, "Só um minutinho", 3000).show();
+		Toast.makeText(this, "SÃ³ um minutinho", 3000).show();
 	}
-
+	private long tempAtual = 0;
 	public void startCronometer(View view) {		
-		if (ch.getText().equals("Continuar")){
-			ch.setBase(SystemClock.elapsedRealtime() - milliseconds);
-		} else {
+		if (start.getText().equals("Pausar")){
+			tempAtual = SystemClock.elapsedRealtime() - ch.getBase();
+			ch.stop();
+			start.setText("Continuar");
+		} 
+		else if(start.getText().equals("Continuar")){
+			ch.setBase(SystemClock.elapsedRealtime() - tempAtual);
+			ch.start();
+			start.setText("Pausar");
+		}
+		
+		else {
 			ch.setBase(SystemClock.elapsedRealtime());
 			ch.start();
-			start.setEnabled(false);
-			
+			start.setText("Pausar");
+		
 		}
 	}
 
-	public void stopCronometer(View view) {
-		if (stop.getText().equals("Reset")) {
-			resetCronometer(view);
-		} 
-		else if(stop.getText().equals("Continuar")){
-//			TODO continua o tempo  normalmente
-			milliseconds = SystemClock.elapsedRealtime() - ch.getBase();
-			stop.setText("Pausar");
-			start.setEnabled(false);
-			}
-		else {
-			milliseconds = SystemClock.elapsedRealtime() - ch.getBase();
-			ch.stop();
-			stop.setText("Reset");
-			start.setText("Continuar");
-			start.setEnabled(false);
-		}
-	}
-
-	public void resetCronometer(View view) {
+	public void novaPartida(View view) {
 		ch.setBase(SystemClock.elapsedRealtime());
 		ch.stop();
-		stop.setText("Pause");
-		start.setEnabled(true);
-		start.setText("Começar");
+		start.setText("ComeÃ§ar");
 	}
 	
 }
