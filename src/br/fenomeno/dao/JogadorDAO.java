@@ -1,5 +1,6 @@
 package br.fenomeno.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import android.content.ContentValues;
@@ -80,7 +81,17 @@ public class JogadorDAO implements IJogadorDAO {
 
 	@Override
 	public List<Jogador> buscarTodosJogadores() {
-		throw new AssertionError("Método não implementado nessa versão");
+
+		Cursor cursor = getDb().query(DatabaseHelper.Jogador.TABELA,
+				DatabaseHelper.Jogador.COLUNAS, null, null, null, null, DatabaseHelper.Jogador.NOME);
+		List<Jogador> jogadores = new ArrayList<Jogador>();
+		while(cursor.moveToNext()) {
+			Jogador jogador = criarJogador(cursor);
+			jogadores.add(jogador);
+		}
+		cursor.close();
+		return jogadores;
+
 	}
 
 	@Override

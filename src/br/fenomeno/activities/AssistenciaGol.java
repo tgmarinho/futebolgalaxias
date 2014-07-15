@@ -12,21 +12,26 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
+import br.fenomeno.dao.IJogadorDAO;
+import br.fenomeno.dao.JogadorDAO;
 import br.fenomeno.entity.Assistencia;
 import br.fenomeno.entity.GerarJogadoresTemp;
 import br.fenomeno.entity.Gol;
 import br.fenomeno.entity.Jogador;
+import br.fenomeno.service.JogadorService;
 
 
 public class AssistenciaGol extends Activity {
 
+	private JogadorService jogadorService = new JogadorService(this);
+	
 	private int posicaoSpinner;
 
 	List<Assistencia> jogadoresQueFizeramAssistencias = new ArrayList<Assistencia>();
 	List<Gol> jogadoresQueFizeramGols = new ArrayList<Gol>();
 
 	// buscar de algum lugar (Banco de dados...)
-	List<Jogador> jogadoresFake =  GerarJogadoresTemp.jogadoresFake();
+//	List<Jogador> jogadoresFake =  GerarJogadoresTemp.jogadoresFake();
 
 	private Jogador jogadorAssistencia;
 	private Jogador jogadorGol;
@@ -46,9 +51,9 @@ public class AssistenciaGol extends Activity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.spinner_assistencia_gol);
-
-//		Typeface type = Typeface.createFromAsset(getAssets(),"fonts/mvboli.ttf");
-
+		
+		String[] arrayDeJogadores = jogadorService.arrayDeJogadores();
+		
 		txtAssistencia = (TextView) findViewById(R.id.txtAssistencia);
 		txtGol = (TextView) findViewById(R.id.txtGol);
 
@@ -58,11 +63,11 @@ public class AssistenciaGol extends Activity {
 
 
 		txtQuemFezGol = (TextView) findViewById(R.id.txtQuemFezGol);;
-		txtQuemFezAssistencia = (TextView) findViewById(R.id.txtQuemFezAssistencia);;
+		txtQuemFezAssistencia = (TextView) findViewById(R.id.txtQuemFezAssistencia);
 
 		@SuppressWarnings("rawtypes")
 		ArrayAdapter adaptador = new ArrayAdapter<String>(this,
-				android.R.layout.simple_spinner_item, GerarJogadoresTemp.jogadoresStringFake());
+						android.R.layout.simple_spinner_item, arrayDeJogadores);
 
 		adaptador.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		comboGol.setAdapter(adaptador);
@@ -77,13 +82,14 @@ public class AssistenciaGol extends Activity {
 	@Override
 	protected void onResume() {
 		super.onResume();
-
+		
+		final List<Jogador> listaDeJogadores = jogadorService.listaDeJogadores();
 
 		// Se selecionar algum planeta atualiza a imagem
 		comboAssistencia.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 			public void onItemSelected(AdapterView<?> parent, View v, int posicao, long id) {
 
-				setJogadorAssistencia(jogadoresFake.get(posicao));
+				setJogadorAssistencia(listaDeJogadores.get(posicao));
 				setPosicaoSpinner(posicao);
 				System.out.println(getJogadorAssistencia().getNome());
 
@@ -98,7 +104,7 @@ public class AssistenciaGol extends Activity {
 		comboGol.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 			public void onItemSelected(AdapterView<?> parent, View v, int posicao, long id) {
 
-				setJogadorGol(jogadoresFake.get(posicao));
+				setJogadorGol(listaDeJogadores.get(posicao));
 				setPosicaoSpinner(posicao);
 				System.out.println(getJogadorGol().getNome());
 
@@ -114,7 +120,7 @@ public class AssistenciaGol extends Activity {
 			public void onClick(View arg0) {
 
 				// Grava 
-				txtQuemFezAssistencia.setText("Assitência:" +getJogadorAssistencia().getNome());
+				txtQuemFezAssistencia.setText("AssitÃªncia:" +getJogadorAssistencia().getNome());
 				txtQuemFezGol.setText("5' - Gol:" +getJogadorGol().getNome());
 				// pegar o minuto que foi feito com o gol ex: 5', 7'
 				//acao de gravar o gol e gerar um historico para 

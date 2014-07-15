@@ -7,12 +7,12 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class DatabaseHelper extends SQLiteOpenHelper{
 
 	private static final String BANCO_DADOS = "FutebolDasGalaxias";
-	private static int VERSAO = 8;
+	private static int VERSAO = 14;
 	
 	
 	public static class Configuracao{
-		public static final String TABELA = "configuracao";
-		public static final String _ID = "_id";
+		public static final String TABELA = "Configuracao";
+		public static final String _ID = "id";
 		public static final String GOL = "gol";
 		public static final String MINUTO = "minuto";
 		
@@ -21,7 +21,7 @@ public class DatabaseHelper extends SQLiteOpenHelper{
 	
 	
 	public static class Partida{
-		public static final String TABELA = "partida";
+		public static final String TABELA = "Partida";
 		public static final String _ID = "_id";
 		public static final String INICIO = "dt_inicio";
 		public static final String _ID_JOGADOR_ASSIST_A = "id_jogador_assist_a";
@@ -34,7 +34,7 @@ public class DatabaseHelper extends SQLiteOpenHelper{
 	}
 	
 	public static class Jogador{
-		public static final String TABELA = "jogador";
+		public static final String TABELA = "Jogador";
 		public static final String _ID = "_id";
 		public static final String NOME = "nome";
 		public static final String EMAIL = "email";
@@ -85,18 +85,27 @@ public class DatabaseHelper extends SQLiteOpenHelper{
 	
 	@Override
 	public void onCreate(SQLiteDatabase db) {
-		String ddl = "CREATE TABLE IF NOT EXISTS Configuracao (id INTEGER primary key, gol INTEGER , minutos INTEGER)";
-		db.execSQL(ddl);
-
-		ddl = "INSERT or replace INTO Configuracao (id, gol, minutos) VALUES(1,2,10)" ;       
-		db.execSQL(ddl);
+		
+		db.execSQL("CREATE TABLE IF NOT EXISTS Configuracao (id INTEGER primary key, gol INTEGER , minutos INTEGER)");
+		db.execSQL("CREATE TABLE IF NOT EXISTS Jogador(_id INTEGER primary key, nome TEXT, email TEXT, celular TEXT)");
+		
+		
+		db.execSQL("INSERT or REPLACE INTO Configuracao (id, gol, minutos) VALUES(1,2,10)");       
+		db.execSQL("INSERT OR REPLACE INTO Jogador (_id, nome) VALUES (1, 'Thiago Marinho')");
+		db.execSQL("INSERT OR REPLACE INTO Jogador (_id, nome) VALUES (2, 'Adaylon')");
+		db.execSQL("INSERT OR REPLACE INTO Jogador (_id, nome) VALUES (3, 'Igor')");
+		db.execSQL("INSERT OR REPLACE INTO Jogador (_id, nome) VALUES (4, 'Ulisses')");
+		db.execSQL("INSERT OR REPLACE INTO Jogador (_id, nome) VALUES (5, 'Jean')");
+		db.execSQL("INSERT OR REPLACE INTO Jogador (_id, nome) VALUES (6, 'Gabriel')");
+		
+		
 	}
 
 	@Override
 	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-		String ddl = "DROP TABLE IF EXISTS Configuracao";
-		db.execSQL(ddl);
-
+		db.execSQL("DROP TABLE IF EXISTS Configuracao");
+		db.execSQL("DROP TABLE IF EXISTS Jogador");
+		
 		this.onCreate(db);
 	}
 	
