@@ -23,10 +23,14 @@ public class DatabaseHelper extends SQLiteOpenHelper{
 	public static class Partida{
 		public static final String TABELA = "partida";
 		public static final String _ID = "_id";
-		public static final String QTDE_GOL_TIME_A = "qtde_gol_time_a";
-		public static final String QTDE_GOL_TIME_B = "qtde_gol_time_b";
+		public static final String INICIO = "dt_inicio";
+		public static final String _ID_JOGADOR_ASSIST_A = "id_jogador_assist_a";
+		public static final String _ID_JOGADOR_ASSIST_B = "id_jogador_assist_b";
+		public static final String _ID_JOGADOR_GOL_A = "id_jogador_gol_a";
+		public static final String _ID_JOGADOR_GOL_B = "id_jogador_gol_b";
 		
-		public static final String[] COLUNAS = new String[]{ _ID, QTDE_GOL_TIME_A, QTDE_GOL_TIME_B};
+		public static final String[] COLUNAS = new String[]{ _ID, INICIO, _ID_JOGADOR_ASSIST_A, 
+			_ID_JOGADOR_ASSIST_B, _ID_JOGADOR_GOL_A, _ID_JOGADOR_GOL_B };
 	}
 	
 	public static class Jogador{
@@ -37,19 +41,6 @@ public class DatabaseHelper extends SQLiteOpenHelper{
 		public static final String CELULAR = "celular";
 		
 		public static final String[] COLUNAS = new String[]{ _ID, NOME, EMAIL, CELULAR};
-	}
-	
-	public static class AssistenciaGol{
-		public static final String TABELA = "assistencia_gol";
-		public static final String _ID = "_id";
-		public static final String _ID_PARTIDA = "id_partida";
-		public static final String _ID_JOGADOR_ASSIST_A = "id_jogador_assist_a";
-		public static final String _ID_JOGADOR_ASSIST_B = "id_jogador_assist_b";
-		public static final String _ID_JOGADOR_GOL_A = "id_jogador_gol_a";
-		public static final String _ID_JOGADOR_GOL_B = "id_jogador_gol_b";
-		
-		public static final String[] COLUNAS = new String[]{ _ID, _ID_PARTIDA,
-				_ID_JOGADOR_ASSIST_A, _ID_JOGADOR_ASSIST_B, _ID_JOGADOR_GOL_A, _ID_JOGADOR_GOL_B };
 	}
 	
 	public static class Lance{
