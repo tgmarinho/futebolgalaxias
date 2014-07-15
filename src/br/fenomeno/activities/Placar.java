@@ -33,7 +33,7 @@ public class Placar extends Activity implements OnClickListener {
 		setContentView(R.layout.tela_principal);
 		ch = (Chronometer) findViewById(R.id.chronometer);
 		milliseconds = 0;
-		stop = (Button) findViewById(R.id.btnStop);
+		stop = (Button) findViewById(R.id.btnNovaPartida);
 		start = (Button) findViewById(R.id.btnComecar);
 		
 		Typeface type = Typeface.createFromAsset(getAssets(),"fonts/jd_led3.ttf");
@@ -206,7 +206,7 @@ public class Placar extends Activity implements OnClickListener {
 			start.setText("Continuar");
 		} 
 		else if(start.getText().equals("Continuar")){
-//			tempAtual = SystemClock.elapsedRealtime() - tempAtual;
+			ch.setBase(SystemClock.elapsedRealtime() - tempAtual);
 			ch.start();
 			start.setText("Pausar");
 		}
@@ -219,7 +219,7 @@ public class Placar extends Activity implements OnClickListener {
 		}
 	}
 
-	public void resetCronometer(View view) {
+	public void novaPartida(View view) {
 		ch.setBase(SystemClock.elapsedRealtime());
 		ch.stop();
 		start.setText("Começar");
