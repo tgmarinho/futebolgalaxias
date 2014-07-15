@@ -26,17 +26,18 @@ public final class R {
     public static final class id {
         public static final int Divisor1=0x7f070005;
         public static final int btnCartolar=0x7f07001a;
+        public static final int btnComecar=0x7f07001f;
         public static final int btnConfiguracoes=0x7f07001e;
-        public static final int btnFazerGolTime1=0x7f070021;
-        public static final int btnFazerGolTime2=0x7f070022;
-        public static final int btnJogo=0x7f07001f;
-        public static final int btnLances=0x7f070024;
-        public static final int btnTirarGolTime1=0x7f070020;
-        public static final int btnTirarGolTime2=0x7f070023;
+        public static final int btnFazerGolTime1=0x7f070022;
+        public static final int btnFazerGolTime2=0x7f070023;
+        public static final int btnLances=0x7f070025;
+        public static final int btnNovaPartida=0x7f070020;
+        public static final int btnTirarGolTime1=0x7f070021;
+        public static final int btnTirarGolTime2=0x7f070024;
         public static final int chronometer=0x7f070000;
         public static final int comboAssistencia=0x7f070017;
         public static final int comboGol=0x7f070019;
-        public static final int config=0x7f070025;
+        public static final int config=0x7f070026;
         public static final int dates=0x7f070011;
         public static final int futeGalaxias=0x7f07001d;
         public static final int list=0x7f07000f;
@@ -46,7 +47,7 @@ public final class R {
         public static final int reset=0x7f070003;
         public static final int seekBarGols=0x7f070008;
         public static final int seekBarTempo=0x7f07000d;
-        public static final int sobre=0x7f070026;
+        public static final int sobre=0x7f070027;
         public static final int start=0x7f070001;
         public static final int stop=0x7f070002;
         public static final int textView1=0x7f070004;

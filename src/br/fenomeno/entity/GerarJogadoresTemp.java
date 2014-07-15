@@ -1,9 +1,14 @@
 package br.fenomeno.entity;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
+/**
+ * Classe temporária para teste de componente
+ * TODO: mover para teste unitário posteriormente
+ * @author toliveira
+ *
+ */
 public final class GerarJogadoresTemp {
 
 	 static List<Jogador> jogadores = null;

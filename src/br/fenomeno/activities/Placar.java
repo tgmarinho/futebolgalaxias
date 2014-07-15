@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -12,6 +13,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.Chronometer;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -20,13 +22,20 @@ public class Placar extends Activity implements OnClickListener {
 	TextView placarTime1, placarTime2, versus, futeGalaxias;
 	
 	private Intent intent;
-
+	private Chronometer ch;
+	private long milliseconds;
+	Button stop,start;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
 		setContentView(R.layout.tela_principal);
-
+		ch = (Chronometer) findViewById(R.id.chronometer);
+		milliseconds = 0;
+		stop = (Button) findViewById(R.id.btnNovaPartida);
+		start = (Button) findViewById(R.id.btnComecar);
+		
 		Typeface type = Typeface.createFromAsset(getAssets(),"fonts/jd_led3.ttf");
 		Typeface type2 = Typeface.createFromAsset(getAssets(),"fonts/jd_wave.ttf");
 
@@ -39,7 +48,7 @@ public class Placar extends Activity implements OnClickListener {
 		placarTime2.setTypeface(type);
 		versus.setTypeface(type);
 		futeGalaxias.setTypeface(type2);
-		// seta padrão
+		// seta padrï¿½o
 		placarTime1.setText("0");
 		placarTime2.setText("0");
 		versus.setText("  -  ");
@@ -177,9 +186,7 @@ public class Placar extends Activity implements OnClickListener {
 			//Log.i("TAG", "BOTAO CLICADO CASE");
 			Intent irParaSettings = new Intent(this, Configuracoes.class);
 			startActivity(irParaSettings);
-			
 			break;
-
 		default:
 			break;
 		}
@@ -189,7 +196,33 @@ public class Placar extends Activity implements OnClickListener {
 
 	@Override
 	public void onClick(View v) {
-		Toast.makeText(this, "Só um minutinho", 3000).show();
+		Toast.makeText(this, "SÃ³ um minutinho", 3000).show();
+	}
+	private long tempAtual = 0;
+	public void startCronometer(View view) {		
+		if (start.getText().equals("Pausar")){
+			tempAtual = SystemClock.elapsedRealtime() - ch.getBase();
+			ch.stop();
+			start.setText("Continuar");
+		} 
+		else if(start.getText().equals("Continuar")){
+			ch.setBase(SystemClock.elapsedRealtime() - tempAtual);
+			ch.start();
+			start.setText("Pausar");
+		}
+		
+		else {
+			ch.setBase(SystemClock.elapsedRealtime());
+			ch.start();
+			start.setText("Pausar");
+		
+		}
 	}
 
+	public void novaPartida(View view) {
+		ch.setBase(SystemClock.elapsedRealtime());
+		ch.stop();
+		start.setText("ComeÃ§ar");
+	}
+	
 }

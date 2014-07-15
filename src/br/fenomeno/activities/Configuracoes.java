@@ -74,7 +74,7 @@ public class Configuracoes extends Activity implements OnSeekBarChangeListener {
 
 	@Override
     public void onStartTrackingTouch(SeekBar seekBar) {
-    	//textAction.setText("iniciando seleção..");
+    	//textAction.setText("iniciando seleï¿½ï¿½o..");
     }
 
 	@Override
