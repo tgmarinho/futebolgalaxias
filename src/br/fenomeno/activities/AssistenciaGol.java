@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import android.app.Activity;
-import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -48,13 +47,10 @@ public class AssistenciaGol extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.spinner_assistencia_gol);
 
-		Typeface type = Typeface.createFromAsset(getAssets(),"fonts/mvboli.ttf");
+//		Typeface type = Typeface.createFromAsset(getAssets(),"fonts/mvboli.ttf");
 
 		txtAssistencia = (TextView) findViewById(R.id.txtAssistencia);
 		txtGol = (TextView) findViewById(R.id.txtGol);
-
-		txtAssistencia.setTypeface(type);
-		txtGol.setTypeface(type);
 
 		comboAssistencia = (Spinner) findViewById(R.id.comboAssistencia);
 		comboGol= (Spinner) findViewById(R.id.comboGol);

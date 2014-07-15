@@ -1,8 +1,5 @@
 package br.fenomeno.entity;
 
-import java.sql.Timestamp;
-
-import android.widget.TimePicker;
 
 public class Configuracao {
 

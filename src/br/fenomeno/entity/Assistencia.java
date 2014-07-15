@@ -1,13 +1,16 @@
 package br.fenomeno.entity;
 
+/**
+ * Classe não persitida
+ * @author toliveira
+ *
+ */
 public class Assistencia {
 
 	private Jogador jogador;
 	private Integer minuto;
 	
-	public Assistencia() {
-	}
-	
+	public Assistencia() {	}
 	
 	public Jogador getJogador() {
 		return jogador;

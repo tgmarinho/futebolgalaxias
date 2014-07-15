@@ -1,36 +1,41 @@
-Ao clicar em Gol, a cronometragem é pausada até que se insira os dados referentes ao gol.
-Ao atingir a quantidade de gols máxima definida nas configurações, a cronometragem é parada.
-Ao atingir o tempo máximo, a cronometragem é parada.
+Ao clicar em Gol, a cronometragem ï¿½ pausada atï¿½ que se insira os dados referentes ao gol.
+Ao atingir a quantidade de gols mï¿½xima definida nas configuraï¿½ï¿½es, a cronometragem ï¿½ parada.
+Ao atingir o tempo mï¿½ximo, a cronometragem ï¿½ parada.
 
 
 ENTIDADES:
 ____________________________
 
-CONFIGURACOES
-
-Gol (Integer)
-Tempo (Timestamp)
-____________________________
-
 JOGADORES
 
-Id (int)
-Nome
-Assistencia
-Gol
+Id (Integer)
+Nome (String)
 ____________________________
 
 GRUPO
 
 Id
 Nome
-Data
+Config_Gols (Integer)
+Config_Mintuos (Integer)
+
 ____________________________
 
 GRUPO_JOGADORES
 
-Id_grupo
-Id_jogadores
+Id_Grupo
+Id_Jogadores
+
+____________________________
+
+PARTIDA
+
+Id
+Data_Inicio (Timestamp)
+Data_Fim (Timestamp)
+Id_Grupo
+Jogador_Assistencia
+Jogador_Gol
 ____________________________
 
 
