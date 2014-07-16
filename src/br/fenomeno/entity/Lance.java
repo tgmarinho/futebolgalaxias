@@ -13,13 +13,13 @@ public class Lance {
 	private Integer idJogadorAssistencia;
 	private Integer idJogadorGol;
 	private Integer idPartida;
-	private EnumTime time;
+	private String time;
 	
 	public Lance() {}
 
 	
 	public Lance(Integer id, Integer tempo, Integer idJogadorAssistencia,
-			Integer idJogadorGol, Integer idPartida, EnumTime time) {
+			Integer idJogadorGol, Integer idPartida, String time) {
 		super();
 		this.id = id;
 		this.tempo = tempo;
@@ -70,11 +70,11 @@ public class Lance {
 		this.idPartida = idPartida;
 	}
 
-	public EnumTime getTime() {
+	public String getTime() {
 		return time;
 	}
 
-	public void setTime(EnumTime time) {
+	public void setTime(String time) {
 		this.time = time;
 	}
 	
