@@ -10,6 +10,9 @@ JOGADORES
 
 Id (Integer)
 Nome (String)
+Email
+Telefone
+..
 ____________________________
 
 GRUPO
@@ -34,69 +37,21 @@ Id
 Data_Inicio (Timestamp)
 Data_Fim (Timestamp)
 Id_Grupo
-Jogador_Assistencia
-Jogador_Gol
+
 ____________________________
 
+LANCES
 
+Id
+Tempo (Timestamp)
+Id_Jogador_Assistencia
+Id_Jogador_Gol
+Time (Enum_A_B)
+Id_partida
 
+____________________________
 
+FRASES
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+Id
+Texto
