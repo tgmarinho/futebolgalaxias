@@ -71,7 +71,7 @@ public class JogadorDAO implements IJogadorDAO {
 	}
 
 	private Jogador criarJogador(Cursor cursor) {
-		Jogador jogador = new Jogador(cursor.getLong(cursor .getColumnIndex(DatabaseHelper.Jogador._ID)),
+		Jogador jogador = new Jogador(cursor.getInt(cursor .getColumnIndex(DatabaseHelper.Jogador._ID)),
 							cursor.getString(cursor.getColumnIndex(DatabaseHelper.Jogador.NOME)),
 							cursor.getString(cursor.getColumnIndex(DatabaseHelper.Jogador.EMAIL)),	
 							cursor.getString(cursor.getColumnIndex(DatabaseHelper.Jogador.CELULAR))	);

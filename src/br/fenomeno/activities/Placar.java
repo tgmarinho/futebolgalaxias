@@ -1,12 +1,14 @@
 package br.fenomeno.activities;
 
-import static br.fenomeno.bo.ValidaPlacar.*;
+import static br.fenomeno.bo.ValidaPlacar.naoPermitePlacarNegativo;
+
+import java.util.Date;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.SystemClock;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -16,9 +18,13 @@ import android.widget.Button;
 import android.widget.Chronometer;
 import android.widget.TextView;
 import android.widget.Toast;
+import br.fenomeno.entity.Partida;
+import br.fenomeno.service.PartidaService;
 
 public class Placar extends Activity implements OnClickListener {
 
+	private PartidaService partidaService = new PartidaService(this);
+	
 	TextView placarTime1, placarTime2, versus, futeGalaxias;
 	
 	private Intent intent;
@@ -198,6 +204,8 @@ public class Placar extends Activity implements OnClickListener {
 	public void onClick(View v) {
 		Toast.makeText(this, "Só um minutinho", 3000).show();
 	}
+	
+	
 	private long tempAtual = 0;
 	public void startCronometer(View view) {		
 		if (start.getText().equals("Pausar")){
@@ -223,6 +231,12 @@ public class Placar extends Activity implements OnClickListener {
 		ch.setBase(SystemClock.elapsedRealtime());
 		ch.stop();
 		start.setText("Começar");
+		
+		Partida partida = new Partida();
+		partida.setInicio(new Date());
+		
+		partidaService.salvarPartida(partida);
+		
 	}
 	
 }

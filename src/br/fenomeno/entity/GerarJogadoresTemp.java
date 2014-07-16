@@ -18,35 +18,35 @@ public final class GerarJogadoresTemp {
 		 List<Jogador> jogadores = new ArrayList<Jogador>();
 		
 		Jogador j1= new Jogador();
-		j1.setId(1L);
+		j1.setId(1);
 		j1.setNome("Ulisses");
 		
 		Jogador j2= new Jogador();
-		j2.setId(2L);
+		j2.setId(2);
 		j2.setNome("Thiago Marinho");
 		
 		Jogador j3= new Jogador();
-		j3.setId(3L);
+		j3.setId(3);
 		j3.setNome("Adaylon");
 		
 		Jogador j4= new Jogador();
-		j4.setId(4L);
+		j4.setId(4);
 		j4.setNome("Igor");
 		
 		Jogador j5= new Jogador();
-		j5.setId(5L);
+		j5.setId(5);
 		j5.setNome("Jean");
 		
 		Jogador j6= new Jogador();
-		j6.setId(6L);
+		j6.setId(6);
 		j6.setNome("Renato");
 		
 		Jogador j7= new Jogador();
-		j7.setId(7L);
+		j7.setId(7);
 		j7.setNome("Lucas");
 		
 		Jogador j8= new Jogador();
-		j8.setId(8L);
+		j8.setId(8);
 		j8.setNome("Gabriel");
 		
 		jogadores.add(j1);

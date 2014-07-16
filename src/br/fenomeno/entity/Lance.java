@@ -8,50 +8,79 @@ package br.fenomeno.entity;
  */
 public class Lance {
 
-	private Long id;
-	private Long idPartida;
-	private String lances;
+	private Integer id;
+	private Integer tempo;
+	private Integer idJogadorAssistencia;
+	private Integer idJogadorGol;
+	private Integer idPartida;
+	private EnumTime time;
 	
 	public Lance() {}
+
 	
-	
-	
-	/**
-	 * 
-	 * @param id
-	 * @param idPartida
-	 * @param lances
-	 */
-	public Lance(Long id, Long idPartida, String lances) {
+	public Lance(Integer id, Integer tempo, Integer idJogadorAssistencia,
+			Integer idJogadorGol, Integer idPartida, EnumTime time) {
 		super();
 		this.id = id;
+		this.tempo = tempo;
+		this.idJogadorAssistencia = idJogadorAssistencia;
+		this.idJogadorGol = idJogadorGol;
 		this.idPartida = idPartida;
-		this.lances = lances;
+		this.time = time;
 	}
 
 
-	public Long getId() {
+	public Integer getId() {
 		return id;
 	}
-	public void setId(Long id) {
+
+	public void setId(Integer id) {
 		this.id = id;
 	}
-	
-	
-	public Long getIdPartida() {
+
+	public Integer getTempo() {
+		return tempo;
+	}
+
+	public void setTempo(Integer tempo) {
+		this.tempo = tempo;
+	}
+
+	public Integer getIdJogadorAssistencia() {
+		return idJogadorAssistencia;
+	}
+
+	public void setIdJogadorAssistencia(Integer idJogadorAssistencia) {
+		this.idJogadorAssistencia = idJogadorAssistencia;
+	}
+
+	public Integer getIdJogadorGol() {
+		return idJogadorGol;
+	}
+
+	public void setIdJogadorGol(Integer idJogadorGol) {
+		this.idJogadorGol = idJogadorGol;
+	}
+
+	public Integer getIdPartida() {
 		return idPartida;
 	}
 
-	public void setIdPartida(Long idPartida) {
+	public void setIdPartida(Integer idPartida) {
 		this.idPartida = idPartida;
 	}
 
-	public String getLances() {
-		return lances;
+	public EnumTime getTime() {
+		return time;
 	}
-	public void setLances(String lances) {
-		this.lances = lances;
+
+	public void setTime(EnumTime time) {
+		this.time = time;
 	}
+	
+	
+	
+
 	
 	
 	

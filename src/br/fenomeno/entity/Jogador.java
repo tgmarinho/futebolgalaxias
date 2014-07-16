@@ -2,7 +2,7 @@ package br.fenomeno.entity;
 
 public class Jogador {
 	
-	private Long id;
+	private Integer id;
 	private String nome;
 	private String email;
 	private String celular;
@@ -12,7 +12,7 @@ public class Jogador {
 	
 	
 
-	public Jogador(Long id, String nome, String email, String celular) {
+	public Jogador(Integer id, String nome, String email, String celular) {
 		super();
 		this.id = id;
 		this.nome = nome;
@@ -46,15 +46,14 @@ public class Jogador {
 		this.celular = celular;
 	}
 
-	public Long getId() {
+	public Integer getId() {
 		return id;
 	}
 
-
-	/** TODO: retirar quando estiver em produção, usando apenas para teste */
-	public void setId(Long id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
+
 	
 	
 

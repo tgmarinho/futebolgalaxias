@@ -30,10 +30,10 @@ public class PartidaDAO implements IPartidaDAO {
 	public long salvar(Partida p) {
 		ContentValues values = new ContentValues();
 		values.put(DatabaseHelper.Partida._ID, p.getId());
-		values.put(DatabaseHelper.Partida._ID_JOGADOR_ASSIST_A, p.getJogadorAssistenciaTimeA().toString());
-		values.put(DatabaseHelper.Partida._ID_JOGADOR_ASSIST_B, p.getJogadorAssistenciaTimeB().toString());
-		values.put(DatabaseHelper.Partida._ID_JOGADOR_GOL_A, p.getJogadorAssistenciaTimeA().toString());
-		values.put(DatabaseHelper.Partida._ID_JOGADOR_GOL_B, p.getJogadorAssistenciaTimeB().toString());
+		values.put(DatabaseHelper.Partida._ID_JOGADOR_ASSIST_A, p.getJogadorAssistenciaTimeA());
+		values.put(DatabaseHelper.Partida._ID_JOGADOR_ASSIST_B, p.getJogadorAssistenciaTimeB());
+		values.put(DatabaseHelper.Partida._ID_JOGADOR_GOL_A, p.getJogadorAssistenciaTimeA());
+		values.put(DatabaseHelper.Partida._ID_JOGADOR_GOL_B, p.getJogadorAssistenciaTimeB());
 		return getDb().insert(DatabaseHelper.Partida.TABELA, null, values);
 	}
 
@@ -62,12 +62,12 @@ public class PartidaDAO implements IPartidaDAO {
 
 
 	private Partida criarPartida(Cursor cursor) {
-		Partida partida = new Partida(cursor.getLong(cursor.getColumnIndex(DatabaseHelper.Partida._ID)),
+		Partida partida = new Partida(cursor.getInt(cursor.getColumnIndex(DatabaseHelper.Partida._ID)),
 				new Date(cursor.getLong(cursor.getColumnIndex(DatabaseHelper.Partida.INICIO))),
-				cursor.getLong(cursor.getColumnIndex(DatabaseHelper.Partida._ID_JOGADOR_ASSIST_A)),
-				cursor.getLong(cursor.getColumnIndex(DatabaseHelper.Partida._ID_JOGADOR_ASSIST_B)),	
-				cursor.getLong(cursor.getColumnIndex(DatabaseHelper.Partida._ID_JOGADOR_GOL_A)),
-				cursor.getLong(cursor.getColumnIndex(DatabaseHelper.Partida._ID_JOGADOR_GOL_B))	);
+				cursor.getInt(cursor.getColumnIndex(DatabaseHelper.Partida._ID_JOGADOR_ASSIST_A)),
+				cursor.getInt(cursor.getColumnIndex(DatabaseHelper.Partida._ID_JOGADOR_ASSIST_B)),	
+				cursor.getInt(cursor.getColumnIndex(DatabaseHelper.Partida._ID_JOGADOR_GOL_A)),
+				cursor.getInt(cursor.getColumnIndex(DatabaseHelper.Partida._ID_JOGADOR_GOL_B))	);
 
 		return partida;
 	}

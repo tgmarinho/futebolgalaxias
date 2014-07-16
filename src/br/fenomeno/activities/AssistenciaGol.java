@@ -12,10 +12,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
-import br.fenomeno.dao.IJogadorDAO;
-import br.fenomeno.dao.JogadorDAO;
 import br.fenomeno.entity.Assistencia;
-import br.fenomeno.entity.GerarJogadoresTemp;
 import br.fenomeno.entity.Gol;
 import br.fenomeno.entity.Jogador;
 import br.fenomeno.service.JogadorService;
@@ -121,10 +118,13 @@ public class AssistenciaGol extends Activity {
 
 				// Grava 
 				txtQuemFezAssistencia.setText("Assitência:" +getJogadorAssistencia().getNome());
-				txtQuemFezGol.setText("5' - Gol:" +getJogadorGol().getNome());
+				txtQuemFezGol.setText("Gol:" +getJogadorGol().getNome());
 				// pegar o minuto que foi feito com o gol ex: 5', 7'
 				//acao de gravar o gol e gerar um historico para 
 				// gravar no banco de dados
+				
+				
+				
 
 			}
 		});

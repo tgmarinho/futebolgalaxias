@@ -1,6 +1,10 @@
 package br.fenomeno.entity;
 
-
+/**
+ * TODO REFATORAR  vai tornar isso em grupo que já existe, por enquato esta assim para não dar erro na tela, pois não foi implementado o grupo
+ * @author jean
+ *
+ */
 public class Configuracao {
 
 	private Integer id;
