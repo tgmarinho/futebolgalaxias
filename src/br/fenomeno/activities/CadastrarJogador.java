@@ -1,13 +1,10 @@
 package br.fenomeno.activities;
 
-import br.fenomeno.dao.DatabaseHelper.Jogador;
-import br.fenomeno.dao.IJogadorDAO;
-import br.fenomeno.dao.JogadorDAO;
-import br.fenomeno.entity.Configuracao;
 import android.app.Activity;
 import android.os.Bundle;
-import android.widget.SeekBar;
 import android.widget.TextView;
+import br.fenomeno.dao.JogadorDAO;
+import br.fenomeno.entity.Jogador;
 
 
 public class CadastrarJogador extends Activity {
@@ -26,7 +23,7 @@ public class CadastrarJogador extends Activity {
 		 * SELECIONAR QTD DE GOLS
 		 */
 		textViewNome = (TextView)findViewById(R.id.textViewNome);
-		//jogador.
+		//jogador.getClass()
         
 
 	}
