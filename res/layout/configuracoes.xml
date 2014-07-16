@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="10dip" >
+    android:padding="10dp" >
 
     <TextView
         android:id="@+id/textView1"
@@ -15,11 +15,11 @@
     <View      
         android:id="@+id/Divisor1"
 		android:layout_width="fill_parent"
-		android:layout_height="2dip"
+		android:layout_height="2dp"
 		android:background="#A8A8A8" />
     
 	<LinearLayout
-	    android:layout_marginTop="10dip"
+	    android:layout_marginTop="10dp"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
 		android:orientation="vertical" >
@@ -55,7 +55,7 @@
 	</LinearLayout>
 
 	<LinearLayout
-	    android:layout_marginTop="10dip"
+	    android:layout_marginTop="10dp"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
 		android:orientation="vertical" >
@@ -88,5 +88,43 @@
             android:textSize="10dp" />
 		
 	</LinearLayout>
+	
+	<View
+	    android:id="@+id/Divisor2"
+	    android:layout_width="fill_parent"
+	    android:layout_height="1dp"
+	    android:layout_marginTop="10dp"
+	    android:background="#9999" />
+	
+	<LinearLayout
+	    android:id="@+id/configCadastrarJogador"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:orientation="vertical"
+		android:clickable="true" >
+	    
+		<ImageView
+		    android:layout_width="35dp"
+		    android:layout_height="35dp"
+		    android:layout_gravity="left"
+		    android:layout_marginBottom="-35dp"
+		    android:src="@drawable/icon_pes" />
+		
+		<TextView
+		    android:layout_gravity="left"
+		    android:layout_marginLeft="35dp"
+	        android:id="@+id/textViewJogador"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:textAppearance="?android:attr/textAppearanceLarge"
+	        android:text="Cadastro de Jogadores..." />
+	
+	</LinearLayout>
+    
+    <View      
+        android:id="@+id/Divisor3"
+		android:layout_width="fill_parent"
+		android:layout_height="2dp"
+		android:background="#A8A8A8" />
 
 </LinearLayout>
