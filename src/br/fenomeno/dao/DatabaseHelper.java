@@ -7,7 +7,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class DatabaseHelper extends SQLiteOpenHelper{
 
 	private static final String BANCO_DADOS = "FutebolDasGalaxias";
-	private static int VERSAO = 14;
+	private static int VERSAO = 18;
 	
 	/**TODO tirar essa tabela  quando o grupo estiver implementado*/
 	public static class Configuracao {
@@ -78,14 +78,9 @@ public class DatabaseHelper extends SQLiteOpenHelper{
 												ID_JOGADOR_GOL, TIME, ID_PARTIDA };
 	}
 	
-	
-	
-	
-	
 	public DatabaseHelper(Context context) {
 		super(context, BANCO_DADOS, null, VERSAO);
 	}
-	
 	
 	@Override
 	public void onCreate(SQLiteDatabase db) {
@@ -105,7 +100,7 @@ public class DatabaseHelper extends SQLiteOpenHelper{
 		db.execSQL("CREATE TABLE IF NOT EXISTS Partida(_id INTEGER primary key AUTOINCREMENT, dt_inicio DATE, dt_fim DATE, id_grupo INTEGER )") ;
 		
 		db.execSQL("CREATE TABLE IF NOT EXISTS Lance(_id INTEGER primary key AUTOINCREMENT, tempo INTEGER, " +
-				" id_jogador_assist INTEGER, id_jogador_gol INTEGER, tempo INTEGER, time TEXT )");
+				" id_jogador_assist INTEGER, id_jogador_gol INTEGER, time TEXT )");
 		
 		
 		// TODO excluir depois esse cara
@@ -136,6 +131,10 @@ public class DatabaseHelper extends SQLiteOpenHelper{
 	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 		db.execSQL("DROP TABLE IF EXISTS Configuracao");
 		db.execSQL("DROP TABLE IF EXISTS Jogador");
+		db.execSQL("DROP TABLE IF EXISTS Grupo");
+		db.execSQL("DROP TABLE IF EXISTS GrupoJogador");
+		db.execSQL("DROP TABLE IF EXISTS Partida");
+		db.execSQL("DROP TABLE IF EXISTS Lance");
 		
 		this.onCreate(db);
 	}

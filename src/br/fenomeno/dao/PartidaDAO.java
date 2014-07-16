@@ -8,6 +8,11 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import br.fenomeno.entity.Partida;
 
+/**
+ *  
+ * @author toliveira
+ *
+ */
 public class PartidaDAO implements IPartidaDAO {
 
 	private DatabaseHelper helper;
@@ -29,11 +34,9 @@ public class PartidaDAO implements IPartidaDAO {
 	@Override
 	public long salvar(Partida p) {
 		ContentValues values = new ContentValues();
-//		values.put(DatabaseHelper.Partida._ID, p.getId());
-//		values.put(DatabaseHelper.Partida._ID_JOGADOR_ASSIST_A, p.getJogadorAssistenciaTimeA());
-//		values.put(DatabaseHelper.Partida._ID_JOGADOR_ASSIST_B, p.getJogadorAssistenciaTimeB());
-//		values.put(DatabaseHelper.Partida._ID_JOGADOR_GOL_A, p.getJogadorAssistenciaTimeA());
-//		values.put(DatabaseHelper.Partida._ID_JOGADOR_GOL_B, p.getJogadorAssistenciaTimeB());
+		values.put(DatabaseHelper.Partida.INICIO, p.getInicio() == null ? null : p.getInicio().getTime());
+		values.put(DatabaseHelper.Partida.FIM, p.getFim() == null ? null : p.getFim().getTime());
+		values.put(DatabaseHelper.Partida.GRUPO, p.getIdGrupo());
 		return getDb().insert(DatabaseHelper.Partida.TABELA, null, values);
 	}
 
@@ -49,11 +52,9 @@ public class PartidaDAO implements IPartidaDAO {
 	@Override
 	public long atualizar(Partida p) {
 		ContentValues values = new ContentValues();
-//		values.put(DatabaseHelper.Partida._ID, p.getId());
-//		values.put(DatabaseHelper.Partida._ID_JOGADOR_ASSIST_A, p.getJogadorAssistenciaTimeA().toString());
-//		values.put(DatabaseHelper.Partida._ID_JOGADOR_ASSIST_B, p.getJogadorAssistenciaTimeB().toString());
-//		values.put(DatabaseHelper.Partida._ID_JOGADOR_GOL_A, p.getJogadorAssistenciaTimeA().toString());
-//		values.put(DatabaseHelper.Partida._ID_JOGADOR_GOL_B, p.getJogadorAssistenciaTimeB().toString());
+		values.put(DatabaseHelper.Partida.INICIO, p.getInicio() == null ? null : p.getInicio().getTime());
+		values.put(DatabaseHelper.Partida.FIM, p.getFim() == null ? null : p.getFim().getTime());
+		values.put(DatabaseHelper.Partida.GRUPO, p.getIdGrupo());
 		return getDb().update(DatabaseHelper.Partida.TABELA, values,
 				DatabaseHelper.Partida._ID + " = ?",
 				new String[] { p.getId().toString() });
@@ -62,17 +63,13 @@ public class PartidaDAO implements IPartidaDAO {
 
 
 	private Partida criarPartida(Cursor cursor) {
-//		Partida partida = new Partida(cursor.getInt(cursor.getColumnIndex(DatabaseHelper.Partida._ID)),
-//				new Date(cursor.getLong(cursor.getColumnIndex(DatabaseHelper.Partida.INICIO))),
-//				cursor.getInt(cursor.getColumnIndex(DatabaseHelper.Partida._ID_JOGADOR_ASSIST_A)),
-//				cursor.getInt(cursor.getColumnIndex(DatabaseHelper.Partida._ID_JOGADOR_ASSIST_B)),	
-//				cursor.getInt(cursor.getColumnIndex(DatabaseHelper.Partida._ID_JOGADOR_GOL_A)),
-//				cursor.getInt(cursor.getColumnIndex(DatabaseHelper.Partida._ID_JOGADOR_GOL_B))	);
+		Partida partida = new Partida(cursor.getInt(cursor.getColumnIndex(DatabaseHelper.Partida._ID)),
+				new Date(cursor.getLong(cursor.getColumnIndex(DatabaseHelper.Partida.INICIO))),
+				new Date(cursor.getLong(cursor.getColumnIndex(DatabaseHelper.Partida.FIM))),
+				cursor.getInt(cursor.getColumnIndex(DatabaseHelper.Partida.GRUPO)));
 
-//		return partida;
-		return null;
+		return partida;
 	}
-
 
 
 

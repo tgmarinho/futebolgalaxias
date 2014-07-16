@@ -61,7 +61,7 @@ public class CadastrarJogador extends Activity {
 				
 				jogadorDao.salvar(jogador);
 				
-				List<Jogador> todosJogadores = new ArrayList<>();
+				List<Jogador> todosJogadores = new ArrayList<Jogador>();
 				todosJogadores = jogadorDao.buscarTodosJogadores();
 				
 				Intent mudarTela = new Intent(CadastrarJogador.this, Configuracoes.class);

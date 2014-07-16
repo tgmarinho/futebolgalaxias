@@ -5,6 +5,8 @@ import static br.fenomeno.bo.ValidaPlacar.naoPermitePlacarNegativo;
 import java.util.Date;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -25,7 +27,13 @@ public class Placar extends Activity implements OnClickListener {
 
 	private PartidaService partidaService = new PartidaService(this);
 	
+	private AlertDialog alerta;
+	
 	TextView placarTime1, placarTime2, versus, futeGalaxias;
+	
+	Partida partida1;
+	
+	Partida partida;
 	
 	private Intent intent;
 	private Chronometer ch;
@@ -58,6 +66,14 @@ public class Placar extends Activity implements OnClickListener {
 		placarTime1.setText("0");
 		placarTime2.setText("0");
 		versus.setText("  -  ");
+		
+		
+		
+		partida = new Partida();
+		partida.setInicio(new Date());
+		partida.setIdGrupo(1); // grupo fake - futuramente pegar do spinner
+		
+		partidaService.salvarPartida(partida);
 
 	}
 
@@ -232,11 +248,59 @@ public class Placar extends Activity implements OnClickListener {
 		ch.stop();
 		start.setText("Começar");
 		
-		Partida partida = new Partida();
-		partida.setInicio(new Date());
+		exibirAlertaDeNovaPartida();
 		
-		partidaService.salvarPartida(partida);
+		
 		
 	}
+	
+	
+	
+	
+    private void exibirAlertaDeNovaPartida() {
+        //Cria o gerador do AlertDialog
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        //define o titulo
+        builder.setTitle("Nova Partida");
+        //define a mensagem
+        builder.setMessage("Deseja salvar a partida atual?");
+        //define um botão como positivo
+        builder.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface arg0, int arg1) {
+            	
+            	partida = new Partida();
+            	partida.setInicio(new Date());
+            	partida.setIdGrupo(1);
+            	
+            	
+            	Toast.makeText(Placar.this, "Partida salva com sucesso!" + arg1, Toast.LENGTH_SHORT).show();
+                
+            }
+        });
+        //define um botão como negativo.
+        builder.setNegativeButton("Não", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface arg0, int arg1) {
+            	
+            	
+            	
+            	
+                Toast.makeText(Placar.this, "Partida deletada com sucesso!" + arg1, Toast.LENGTH_SHORT).show();
+            }
+        });
+        
+        
+        builder.setNeutralButton("Cancelar", new DialogInterface.OnClickListener() {
+			@Override
+			public void onClick(DialogInterface dialog, int arg1) {
+				 Toast.makeText(Placar.this, "Cancelado", Toast.LENGTH_SHORT).show();
+			}
+		});
+        //cria o AlertDialog
+        alerta = builder.create();
+        //Exibe
+        alerta.show();
+    }
+	
+	
 	
 }
