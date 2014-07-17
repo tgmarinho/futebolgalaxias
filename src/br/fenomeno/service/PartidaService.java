@@ -1,5 +1,7 @@
 package br.fenomeno.service;
 
+import java.util.List;
+
 import android.content.Context;
 import br.fenomeno.dao.IPartidaDAO;
 import br.fenomeno.dao.PartidaDAO;
@@ -14,10 +16,27 @@ public class PartidaService {
 		this.partidaDao = new PartidaDAO(context);
 	}
 	
-	public long salvarPartida(Partida partida) {
+	public Partida salvarPartida(Partida partida) {
 		
-		return partidaDao.salvar(partida);
+		long idPartida = partidaDao.salvar(partida);
+		return partidaDao.buscarPartidaPorId(idPartida);
 		
+		
+	}
+
+	public Partida buscarPartidaPorId(Long id) {
+		
+		return partidaDao.buscarPartidaPorId(id);
+		
+	}
+
+	public List<Partida> buscarTodasPartidas() {
+		 return partidaDao.buscarTodasPartidas();
+	}
+
+	public Partida atualizar(Partida partida) {
+		long idPartida = partidaDao.atualizar(partida);
+		return partidaDao.buscarPartidaPorId(idPartida);
 	}
 
 	

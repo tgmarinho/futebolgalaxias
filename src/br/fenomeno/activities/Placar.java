@@ -23,64 +23,72 @@ import android.widget.Toast;
 import br.fenomeno.entity.Partida;
 import br.fenomeno.service.PartidaService;
 
-public class Placar extends Activity implements OnClickListener {
+public class Placar extends Activity  {
 
 	private PartidaService partidaService = new PartidaService(this);
 	
 	private AlertDialog alerta;
 	
-	TextView placarTime1, placarTime2, versus, futeGalaxias;
+	TextView txtPlacarTime1, txtPlacarTime2, txtVersus, txtFuteGalaxias;
 	
-	Partida partida1;
-	
+	// Entidade
 	Partida partida;
 	
 	private Intent intent;
-	private Chronometer ch;
+	private Chronometer chronometer;
 	private long milliseconds;
-	Button stop,start;
+	Button btnTerminar,btnComecarPausar;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
 		setContentView(R.layout.tela_principal);
-		ch = (Chronometer) findViewById(R.id.chronometer);
+		chronometer = (Chronometer) findViewById(R.id.chronometer);
 		milliseconds = 0;
-		stop = (Button) findViewById(R.id.btnNovaPartida);
-		start = (Button) findViewById(R.id.btnComecar);
+		btnTerminar = (Button) findViewById(R.id.btnTerminar);
+		btnComecarPausar = (Button) findViewById(R.id.btnComecar);
 		
 		Typeface type = Typeface.createFromAsset(getAssets(),"fonts/jd_led3.ttf");
 		Typeface type2 = Typeface.createFromAsset(getAssets(),"fonts/jd_wave.ttf");
 
-		placarTime1 = (TextView) findViewById(R.id.placarTime1);
-		placarTime2 = (TextView) findViewById(R.id.placarTime2);
-		versus = (TextView) findViewById(R.id.versus);
-		futeGalaxias = (TextView) findViewById(R.id.futeGalaxias);
+		txtPlacarTime1 = (TextView) findViewById(R.id.placarTime1);
+		txtPlacarTime2 = (TextView) findViewById(R.id.placarTime2);
+		txtVersus = (TextView) findViewById(R.id.versus);
+		txtFuteGalaxias = (TextView) findViewById(R.id.futeGalaxias);
 
-		placarTime1.setTypeface(type);
-		placarTime2.setTypeface(type);
-		versus.setTypeface(type);
-		futeGalaxias.setTypeface(type2);
-		// seta padr�o
-		placarTime1.setText("0");
-		placarTime2.setText("0");
-		versus.setText("  -  ");
-		
-		
+		txtPlacarTime1.setTypeface(type);
+		txtPlacarTime2.setTypeface(type);
+		txtVersus.setTypeface(type);
+		txtFuteGalaxias.setTypeface(type2);
+		// seta padrão
+		txtPlacarTime1.setText("0");
+		txtPlacarTime2.setText("0");
+		txtVersus.setText("  -  ");
 		
 		partida = new Partida();
 		partida.setInicio(new Date());
 		partida.setIdGrupo(1); // grupo fake - futuramente pegar do spinner
+		partida = partidaService.salvarPartida(partida);
+		System.out.println(partida.getId());
 		
-		partidaService.salvarPartida(partida);
-
+		Partida partida2 = partidaService.buscarPartidaPorId(partida.getId());
+		System.out.println(partida2.toString());
+//		
+//		List<Partida> partidas = partidaService.buscarTodasPartidas();
+//		for (Partida partidateste : partidas) {
+//			System.out.println(partidateste.toString());
+//		}
+		
+		this.onResume();
+	
 	}
 
 	@Override
 	protected void onResume() {
 		super.onResume();
 
+		
 		Button btnGolTime1, btnGolTime2, btnDecrementaGolTime1, btnDecrementaGolTime2,
 				btnCronometro, btnConfiguracoes, btnLances;
 
@@ -89,26 +97,18 @@ public class Placar extends Activity implements OnClickListener {
 		btnDecrementaGolTime1 = (Button) findViewById(R.id.btnTirarGolTime1);
 		btnDecrementaGolTime2 = (Button) findViewById(R.id.btnTirarGolTime2);
 		btnLances = (Button) findViewById(R.id.btnLances);
-		// btnCronometro = (Button) findViewById(R.id.btnJogo);
-
-		// View.OnClickListener mStartListener = new OnClickListener() {
-		// public void onClick(View v) {
-		// Integer placar = Integer.parseInt(placarTime1.getText().toString());
-		// placarTime1.setText(placar++);
-		// }
-		// };
 
 		btnGolTime1.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
 
-				Integer placarAtual = Integer.parseInt((String) placarTime1.getText());
-				placarTime1.setText(String.valueOf(++placarAtual));
+				Integer placarAtual = Integer.parseInt((String) txtPlacarTime1.getText());
+				txtPlacarTime1.setText(String.valueOf(++placarAtual));
 				
 				Intent marcarAssistenciaGol = new Intent(Placar.this, AssistenciaGol.class);
+				marcarAssistenciaGol.putExtra("idPartida", partida.getId());
 				startActivity(marcarAssistenciaGol);
-				
 				
 			}
 		});
@@ -117,8 +117,8 @@ public class Placar extends Activity implements OnClickListener {
 
 			@Override
 			public void onClick(View v) {
-				Integer placarAtual = Integer.parseInt((String) placarTime2.getText());
-				placarTime2.setText(String.valueOf(++placarAtual));
+				Integer placarAtual = Integer.parseInt((String) txtPlacarTime2.getText());
+				txtPlacarTime2.setText(String.valueOf(++placarAtual));
 				
 				Intent marcarAssistenciaGol = new Intent(Placar.this, AssistenciaGol.class);
 				startActivity(marcarAssistenciaGol);
@@ -129,10 +129,10 @@ public class Placar extends Activity implements OnClickListener {
 
 			@Override
 			public void onClick(View v) {
-				Integer placarAtual = Integer.parseInt((String) placarTime1.getText());
+				Integer placarAtual = Integer.parseInt((String) txtPlacarTime1.getText());
 
 				if (!naoPermitePlacarNegativo(placarAtual)) {
-					placarTime1.setText(String.valueOf(--placarAtual));
+					txtPlacarTime1.setText(String.valueOf(--placarAtual));
 					// Deleta o Gol do cara
 					
 				}
@@ -146,10 +146,10 @@ public class Placar extends Activity implements OnClickListener {
 
 			@Override
 			public void onClick(View v) {
-				Integer placarAtual = Integer.parseInt((String) placarTime2.getText());
+				Integer placarAtual = Integer.parseInt((String) txtPlacarTime2.getText());
 
 				if (!naoPermitePlacarNegativo(placarAtual)) {
-					placarTime2.setText(String.valueOf(--placarAtual));
+					txtPlacarTime2.setText(String.valueOf(--placarAtual));
 					// Deleta o Gol do cara
 				}
 				
@@ -216,91 +216,76 @@ public class Placar extends Activity implements OnClickListener {
 		return super.onOptionsItemSelected(item);
 	}
 
-	@Override
-	public void onClick(View v) {
-		Toast.makeText(this, "Só um minutinho", 3000).show();
-	}
-	
 	
 	private long tempAtual = 0;
-	public void startCronometer(View view) {		
-		if (start.getText().equals("Pausar")){
-			tempAtual = SystemClock.elapsedRealtime() - ch.getBase();
-			ch.stop();
-			start.setText("Continuar");
+	public void startCronometer(View view) {
+		
+		if (btnComecarPausar.getText().equals("Pausar")){
+			tempAtual = SystemClock.elapsedRealtime() - chronometer.getBase();
+			chronometer.stop();
+			btnComecarPausar.setText("Continuar");
 		} 
-		else if(start.getText().equals("Continuar")){
-			ch.setBase(SystemClock.elapsedRealtime() - tempAtual);
-			ch.start();
-			start.setText("Pausar");
+		else if(btnComecarPausar.getText().equals("Continuar")){
+			chronometer.setBase(SystemClock.elapsedRealtime() - tempAtual);
+			chronometer.start();
+			btnComecarPausar.setText("Pausar");
 		}
 		
 		else {
-			ch.setBase(SystemClock.elapsedRealtime());
-			ch.start();
-			start.setText("Pausar");
-		
+			
+			chronometer.setBase(SystemClock.elapsedRealtime());
+			chronometer.start();
+			btnComecarPausar.setText("Pausar");
+			
 		}
 	}
 
-	public void novaPartida(View view) {
-		ch.setBase(SystemClock.elapsedRealtime());
-		ch.stop();
-		start.setText("Começar");
-		
-		exibirAlertaDeNovaPartida();
-		
-		
-		
+	public void terminarPartida(View view) {
+
+		//Cria o gerador do AlertDialog
+		AlertDialog.Builder builder = new AlertDialog.Builder(this);
+		//define o titulo
+		builder.setTitle("Terminar Partida");
+		//define a mensagem
+		builder.setMessage("Deseja terminar a Partida");
+		//define um botão como positivo
+		builder.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+			public void onClick(DialogInterface arg0, int arg1) {
+
+				chronometer.setBase(SystemClock.elapsedRealtime());
+				chronometer.stop();
+				btnComecarPausar.setText("Começar");
+
+				
+				partida.setFim(new Date());
+				partidaService.atualizar(partida);
+				System.out.println(partida.toString());
+				onCreate(new Bundle());
+
+				Toast.makeText(Placar.this, "Partida de número: " + partida.getId() + ", salva com sucesso!", Toast.LENGTH_SHORT).show();
+			}
+		});
+
+		builder.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+			@Override
+			public void onClick(DialogInterface dialog, int arg1) {
+				Toast.makeText(Placar.this, "Voltando para partida atual", Toast.LENGTH_SHORT).show();
+			}
+		});
+		//cria o AlertDialog
+		alerta = builder.create();
+		//Exibe
+		alerta.show();
+
+
 	}
 	
 	
 	
-	
-    private void exibirAlertaDeNovaPartida() {
-        //Cria o gerador do AlertDialog
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        //define o titulo
-        builder.setTitle("Nova Partida");
-        //define a mensagem
-        builder.setMessage("Deseja salvar a partida atual?");
-        //define um botão como positivo
-        builder.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface arg0, int arg1) {
-            	
-            	partida = new Partida();
-            	partida.setInicio(new Date());
-            	partida.setIdGrupo(1);
-            	
-            	
-            	Toast.makeText(Placar.this, "Partida salva com sucesso!" + arg1, Toast.LENGTH_SHORT).show();
-                
-            }
-        });
-        //define um botão como negativo.
-        builder.setNegativeButton("Não", new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface arg0, int arg1) {
-            	
-            	
-            	
-            	
-                Toast.makeText(Placar.this, "Partida deletada com sucesso!" + arg1, Toast.LENGTH_SHORT).show();
-            }
-        });
-        
-        
-        builder.setNeutralButton("Cancelar", new DialogInterface.OnClickListener() {
-			@Override
-			public void onClick(DialogInterface dialog, int arg1) {
-				 Toast.makeText(Placar.this, "Cancelado", Toast.LENGTH_SHORT).show();
-			}
-		});
-        //cria o AlertDialog
-        alerta = builder.create();
-        //Exibe
-        alerta.show();
-    }
-	
+	@Override
+	protected void onDestroy() {
+		super.onDestroy();
+	}
 	
 	
 }

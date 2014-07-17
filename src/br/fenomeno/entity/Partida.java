@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class Partida {
 
-	private Integer id;
+	private Long id;
 	private Date inicio;
 	private Date fim;
 	private Integer idGrupo;
@@ -13,7 +13,7 @@ public class Partida {
 	public Partida() { }
 
 
-	public Partida(Integer id, Date inicio, Date fim, Integer idGrupo) {
+	public Partida(Long id, Date inicio, Date fim, Integer idGrupo) {
 		super();
 		this.id = id;
 		this.inicio = inicio;
@@ -21,13 +21,22 @@ public class Partida {
 		this.idGrupo = idGrupo;
 	}
 
+	
+	
 
-	public Integer getId() {
+	@Override
+	public String toString() {
+		return "Partida [id=" + id + ", inicio=" + inicio + ", fim=" + fim
+				+ ", idGrupo=" + idGrupo + "]";
+	}
+
+
+	public Long getId() {
 		return id;
 	}
 
 
-	public void setId(Integer id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

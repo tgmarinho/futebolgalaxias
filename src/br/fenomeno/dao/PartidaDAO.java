@@ -1,6 +1,8 @@
 package br.fenomeno.dao;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -61,16 +63,46 @@ public class PartidaDAO implements IPartidaDAO {
 	}
 
 
+	
+	@Override
+	public Partida buscarPartidaPorId(Long id) {
+
+		Cursor cursor = getDb().query(DatabaseHelper.Partida.TABELA,
+				DatabaseHelper.Partida.COLUNAS,
+				DatabaseHelper.Partida._ID + " = ?", new String[] { id.toString() },
+				null, null, null);
+		if (cursor.moveToNext()) {
+			Partida partida = criarPartida(cursor);
+			cursor.close();
+			return partida;
+		}
+		return null;
+
+	}
+
+	@Override
+	public List<Partida> buscarTodasPartidas() {
+
+		Cursor cursor = getDb().query(DatabaseHelper.Partida.TABELA,
+				DatabaseHelper.Partida.COLUNAS, null, null, null, null, DatabaseHelper.Partida._ID);
+		List<Partida> partidas = new ArrayList<Partida>();
+		while(cursor.moveToNext()) {
+			Partida partida = criarPartida(cursor);
+			partidas.add(partida);
+		}
+		cursor.close();
+		return partidas;
+
+	}
 
 	private Partida criarPartida(Cursor cursor) {
-		Partida partida = new Partida(cursor.getInt(cursor.getColumnIndex(DatabaseHelper.Partida._ID)),
+		Partida partida = new Partida(cursor.getLong(cursor.getColumnIndex(DatabaseHelper.Partida._ID)),
 				new Date(cursor.getLong(cursor.getColumnIndex(DatabaseHelper.Partida.INICIO))),
 				new Date(cursor.getLong(cursor.getColumnIndex(DatabaseHelper.Partida.FIM))),
 				cursor.getInt(cursor.getColumnIndex(DatabaseHelper.Partida.GRUPO)));
 
 		return partida;
 	}
-
-
+	
 
 }

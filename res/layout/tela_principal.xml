@@ -103,14 +103,14 @@
             android:textSize="30sp" />
 
         <Button
-            android:id="@+id/btnNovaPartida"
+            android:id="@+id/btnTerminar"
             android:layout_width="114dp"
             android:layout_height="60dp"
             android:layout_weight="1.56"
             android:background="@drawable/btn_black"
             android:gravity="center"
-            android:onClick="novaPartida"
-            android:text="Nova Partida"
+            android:onClick="terminarPartida"
+            android:text="Terminar"
             android:textColor="@android:color/white" />
         
     </LinearLayout>

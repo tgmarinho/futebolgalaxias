@@ -12,6 +12,8 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
+import br.fenomeno.dao.ILanceDAO;
+import br.fenomeno.dao.LanceDAO;
 import br.fenomeno.entity.Assistencia;
 import br.fenomeno.entity.Gol;
 import br.fenomeno.entity.Jogador;
@@ -27,9 +29,6 @@ public class AssistenciaGol extends Activity {
 	List<Assistencia> jogadoresQueFizeramAssistencias = new ArrayList<Assistencia>();
 	List<Gol> jogadoresQueFizeramGols = new ArrayList<Gol>();
 
-	// buscar de algum lugar (Banco de dados...)
-//	List<Jogador> jogadoresFake =  GerarJogadoresTemp.jogadoresFake();
-
 	private Jogador jogadorAssistencia;
 	private Jogador jogadorGol;
 
@@ -43,6 +42,10 @@ public class AssistenciaGol extends Activity {
 
 	TextView txtQuemFezGol;
 	TextView txtQuemFezAssistencia;
+	
+	
+//	LanceService ls = new LanceService();
+	ILanceDAO dao = new LanceDAO(this);
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -72,7 +75,10 @@ public class AssistenciaGol extends Activity {
 		adaptador.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		comboAssistencia.setAdapter(adaptador);
 
+//		Long idDaPartidaAtual =	savedInstanceState.getLong("idPartida");
 
+		
+		
 	}
 
 
@@ -89,6 +95,8 @@ public class AssistenciaGol extends Activity {
 				setJogadorAssistencia(listaDeJogadores.get(posicao));
 				setPosicaoSpinner(posicao);
 				System.out.println(getJogadorAssistencia().getNome());
+				
+//				dao.salvar(new Lance(1, idJogadorAssistencia, idJogadorGol, idPartida, time))
 
 			}
 
