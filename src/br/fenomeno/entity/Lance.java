@@ -8,7 +8,7 @@ package br.fenomeno.entity;
  */
 public class Lance {
 
-	private Integer id;
+	private Long id;
 	private Integer tempo;
 	private Integer idJogadorAssistencia;
 	private Integer idJogadorGol;
@@ -18,7 +18,7 @@ public class Lance {
 	public Lance() {}
 
 	
-	public Lance(Integer id, Integer tempo, Integer idJogadorAssistencia,
+	public Lance(Long id, Integer tempo, Integer idJogadorAssistencia,
 			Integer idJogadorGol, Integer idPartida, String time) {
 		super();
 		this.id = id;
@@ -30,11 +30,11 @@ public class Lance {
 	}
 
 
-	public Integer getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
