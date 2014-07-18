@@ -202,12 +202,23 @@ public class Placar extends Activity implements OnClickListener {
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		int itemClicado = item.getItemId();
+		Intent mudarTela;
 		
 		switch (itemClicado) {
 		case R.id.config:
 			//Log.i("TAG", "BOTAO CLICADO CASE");
-			Intent irParaSettings = new Intent(this, Configuracoes.class);
-			startActivity(irParaSettings);
+			mudarTela = new Intent(this, Configuracoes.class);
+			startActivity(mudarTela);
+			break;
+		case R.id.cadJogadores:
+			//Log.i("TAG", "BOTAO CLICADO CASE");
+			mudarTela = new Intent(this, CadastrarJogador.class);
+			//mudarTela.setFlags(Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS);
+			Bundle bundle= new Bundle();
+			bundle.putString("keyA", "respB");
+			bundle.setClassLoader(this.getClassLoader());
+	        mudarTela.putExtras(bundle);
+			startActivity(mudarTela);
 			break;
 		default:
 			break;

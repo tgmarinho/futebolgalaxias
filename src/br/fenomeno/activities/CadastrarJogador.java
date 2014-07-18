@@ -23,11 +23,16 @@ public class CadastrarJogador extends Activity {
 
     Jogador jogador = new Jogador();
     JogadorDAO jogadorDao = new JogadorDAO(this);
+    
+    Bundle bundle;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.cadastro_jogadores);
+		
+		bundle = getIntent().getExtras();
+		
 	}
 	
 	@Override
@@ -64,13 +69,20 @@ public class CadastrarJogador extends Activity {
 				List<Jogador> todosJogadores = new ArrayList<Jogador>();
 				todosJogadores = jogadorDao.buscarTodosJogadores();
 				
-				Intent mudarTela = new Intent(CadastrarJogador.this, Configuracoes.class);
+				if (bundle != null) {
+					String testeB = bundle.getString("keyA");
+
+					Log.i("TAGBUNDLE", testeB);
+				}
+				
+				Intent mudarTela = new Intent(CadastrarJogador.this, Placar.class);
+				mudarTela.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 				startActivity(mudarTela);
 				
-				for(Jogador jog : todosJogadores){
+				/*for(Jogador jog : todosJogadores){
 					
 					Log.i("Nome", jog.getNome().toString());
-				}
+				}*/
 				
 			}
 		});
