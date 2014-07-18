@@ -17,7 +17,7 @@ import br.fenomeno.dao.JogadorDAO;
 import br.fenomeno.entity.Jogador;
 
 
-public class CadastrarJogador extends Activity {
+public class CadastroJogadoresActivity extends Activity {
 	
 	private EditText editTextNome, editTextEmail, editTextTelefone;
 
@@ -75,7 +75,7 @@ public class CadastrarJogador extends Activity {
 					Log.i("TAGBUNDLE", testeB);
 				}
 				
-				Intent mudarTela = new Intent(CadastrarJogador.this, Placar.class);
+				Intent mudarTela = new Intent(CadastroJogadoresActivity.this, Placar.class);
 				mudarTela.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 				startActivity(mudarTela);
 				

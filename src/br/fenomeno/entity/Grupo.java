@@ -9,6 +9,9 @@ public class Grupo {
 	private Integer configGols;
 	private Integer configMinutos;
 	
+	public Grupo(){
+	}
+	
 	
 	public Grupo(Integer id, String nome, String descricao, Integer configGols,
 			Integer configMinutos) {
@@ -20,7 +23,11 @@ public class Grupo {
 		this.configMinutos = configMinutos;
 	}
 	
-	
+	@Override
+	public String toString() {
+		return "Grupo [id=" + id + ", nome=" + nome + ", descrição=" + descricao
+				+ ", Config. Gol(s)=" + configGols + ", Config. Tempo=" + configMinutos + "min]";
+	}
 	
 	public Integer getId() {
 		return id;

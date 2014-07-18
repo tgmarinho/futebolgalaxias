@@ -166,7 +166,7 @@ public class Placar extends Activity  {
 			@Override
 			public void onClick(View v) {
 				
-				Intent irParaSettings = new Intent(Placar.this, Configuracoes.class);
+				Intent irParaSettings = new Intent(Placar.this, CadastroGruposActivity.class);
 				startActivity(irParaSettings);
 			}
 		});
@@ -205,14 +205,14 @@ public class Placar extends Activity  {
 		Intent mudarTela;
 		
 		switch (itemClicado) {
-		case R.id.config:
+		case R.id.cadGrupos:
 			//Log.i("TAG", "BOTAO CLICADO CASE");
-			mudarTela = new Intent(this, Configuracoes.class);
+			mudarTela = new Intent(this, CadastroGruposActivity.class);
 			startActivity(mudarTela);
 			break;
 		case R.id.cadJogadores:
 			//Log.i("TAG", "BOTAO CLICADO CASE");
-			mudarTela = new Intent(this, CadastrarJogador.class);
+			mudarTela = new Intent(this, CadastroJogadoresActivity.class);
 			//mudarTela.setFlags(Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS);
 			Bundle bundle= new Bundle();
 			bundle.putString("keyA", "respB");

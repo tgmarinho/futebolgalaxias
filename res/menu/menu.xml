@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android" >
-    <item android:id="@+id/config" android:title="Configurações"></item>
-    <item android:id="@+id/cadJogadores" android:title="Cad. Jogadores"></item>
+    <item android:id="@+id/cadGrupos" android:title="Grupos"></item>
+    <item android:id="@+id/cadJogadores" android:title="Jogadores"></item>
     <item android:id="@+id/sobre" android:title="Sobre"></item>
     
 
